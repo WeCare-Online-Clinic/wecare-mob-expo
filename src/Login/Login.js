@@ -20,7 +20,7 @@ const Login = () =>  {
         // if (isValid) {
         //     let data = { userName, password}
         //     // let data ={email:'admin@gmail.com', password: 'ndansdasd'};
-        //     dispatch(Action.submitLogin(data))
+        //     // dispatch(Action.submitLogin(data))
         //     console.log('pass')
         // } else {
         //     console.log('fail')
@@ -28,17 +28,17 @@ const Login = () =>  {
   
     }
 
-    // validation = () => {
+    // const validation = () => {
     //     let localErrors = _.cloneDeep(errors) //make a seperate local errors object and assign it to localErrors
     //     let isValid = true
     
     //     //validating email
-    //     if (formValue.email.trim().length < 1) {
+    //     if (userName.trim().length < 1) {
     //       let emailMissing = Object.assign({}, { missing: 'email is missing' })
     //       localErrors.emailErrors = emailMissing
     //       isValid = false
     //     } else {
-    //       if (!formValue.email.includes('@')) {
+    //       if (!userName.includes('@')) {
     //         let invalidEmail = Object.assign({}, { invalidEmail: 'invalid email' })
     //         localErrors.emailErrors = invalidEmail
     //         isValid = false
@@ -48,7 +48,7 @@ const Login = () =>  {
     //       localErrors.emailErrors.missing = null
     //     }
     //     // validating password
-    //     if (formValue.password.length < 1) {
+    //     if (password.length < 1) {
     //       let passwordMissing = Object.assign(
     //         {},
     //         { passwordMissing: 'password is missing' }
