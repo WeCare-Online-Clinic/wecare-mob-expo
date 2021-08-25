@@ -12,7 +12,7 @@ import PatientData from './PatientData';
 
 const Profile = () => {
 
-    const arrow = 'chevron-right';
+    
 
     const dispatch = useDispatch();
 
@@ -20,67 +20,14 @@ const Profile = () => {
         dispatch(Actions.getPatient());
     })
 
-    const editField = () => {
-        // navigation.navigate('EditProfile');
-    }
+    
     const reducerData = useSelector(({ patients }) =>patients.managePatient );
     console.log('check list', reducerData.patientList);
     const patientList = reducerData.patientList;
+    const ptlist = PatientData
     return (
 
-        <View style={[styles.container, {
-            flexDirection: "column"
-          }]}>
-            
-            <SafeAreaView style={styles.scrollContainer}>
-                <ScrollView style={styles.scrollView}>
-                    <View style={{padding: 10}}>
-                        <View style={styles.mainCard}>
-                            <Text style={styles.title}>Welcome Nuwan</Text>
-                        </View>
-                        <View>
-                            <View>
-                                <Image style={{width: 200, height: 200, alignSelf: 'center', marginTop: 40, marginBottom: 20}}
-                                    source={require('./profile.png')}
-                                />
-                            </View>
-                            <View style={styles.mainCard}>
-                                <Text style={[styles.title, {alignSelf: 'center'}]}>Nuwan Perera</Text>
-                            </View>
-                            <View style={styles.whitecard}>
-                                <View style={styles.row}>
-                                    <View style={{flex: 11}}>
-                                        <Text style={styles.p}>Address</Text>
-                                        <Text style={styles.pBold}>No 17, Galle Road, Wadduwa</Text>
-                                    </View>
-                                    <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
-                                    </View>
-                                </View>
-                                <View style={styles.row}>
-                                    <View style={{flex: 11}}>
-                                        <Text style={styles.p}>Phone</Text>
-                                        <Text style={styles.pBold}>075 559 3998</Text>
-                                    </View>
-                                    <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
-                                    </View>
-                                </View>
-                                <View style={styles.row}>
-                                    <View style={{flex: 11}}>
-                                        <Text style={styles.p}>Email</Text>
-                                        <Text style={styles.pBold}>nuwan@gmail.com</Text>
-                                    </View>
-                                    <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
-                                    </View>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                </ScrollView>
-            </SafeAreaView>
-        </View>
+        <PatientData/>
     )
 }
 
