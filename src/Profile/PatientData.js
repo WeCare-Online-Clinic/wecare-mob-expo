@@ -29,7 +29,7 @@ const ParientData = (props) => {
                         {patientList.map((patient) => (   
                             <View style={{padding: 10}}>
                                 <View style={styles.mainCard}>
-                                    <Text style={styles.title}>Welcome {patient.name}</Text>                                
+                                    <Text style={[styles.title, {alignSelf: 'center'}]}>{"Welcome  "+ patient.name.slice(0, patient.name.indexOf(" "))}</Text>                                
                                 </View>
                                 <View>
                                     <View>
@@ -44,7 +44,7 @@ const ParientData = (props) => {
                                         <View style={styles.row}>
                                             <View style={{flex: 11}}>
                                                 <Text style={styles.p}>Address</Text>
-                                                <Text style={styles.pBold}>No 17, Galle Road, Wadduwa</Text>
+                                                <Text style={styles.pBold}>{patient.addr}</Text>
                                             </View>
                                             <View style={{flex: 1, justifyContent: 'center'}}>
                                                 <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
@@ -75,6 +75,27 @@ const ParientData = (props) => {
                                             </View>
                                             <View style={{flex: 1, justifyContent: 'center'}}>
                                                 <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
+                                            </View>
+                                        </View>
+                                        <View style={styles.row}>
+                                            <View style={{flex: 11}}>
+                                                <Text style={styles.p}>Date of Birth</Text>
+                                                <Text style={styles.pBold}>{patient.dob.slice(0, patient.dob.indexOf("T"))}</Text>
+                                            </View>
+                                            <View style={{flex: 1, justifyContent: 'center'}}>
+                                                <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
+                                            </View>
+                                        </View>
+                                        <View style={styles.row}>
+                                            <View style={{flex: 11}}>
+                                                    <Text style={styles.p}>NIC Number</Text>
+                                                    <Text style={styles.pBold}>{patient.nic}</Text>
+                                            </View>
+                                        </View>
+                                        <View style={styles.row}>
+                                            <View style={{flex: 11}}>
+                                                    <Text style={styles.p}>Registered Date</Text>
+                                                    <Text style={styles.pBold}>{patient.registeredDate.slice(0, patient.registeredDate.indexOf("T"))}</Text>
                                             </View>
                                         </View>
                                     </View>

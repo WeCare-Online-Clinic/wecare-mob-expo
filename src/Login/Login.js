@@ -1,6 +1,10 @@
-import React, { Component, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, TextInput, View, Text, Image, SafeAreaView, ScrollView, Button, Pressable } from 'react-native';
 import {styles as globalStyles } from '../../styles/global';
+import * as Action from './actions/login.action'
+import { useDispatch } from 'react-redux'
+import reducer from './reducers/login.reducer'
+import withReducer from '../../store/withReducer';
 // import { auto } from 'async';
 
 
@@ -10,10 +14,19 @@ const Login = () =>  {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     
+    const dispatch = useDispatch()
 
+     
     const onLogin = (e) => {
         console.log({userName}, {password});
         console.log('onsubmit')
+
+        let data = {email: userName, password: password}
+        // let data ={email:'admin@gmail.com', password: 'admin@1234'};
+      
+        dispatch(Action.submitLogin(data))
+        console.log('pass')
+
         // e.preventDefault()
         // const isValid = validation()
 
@@ -67,7 +80,7 @@ const Login = () =>  {
 
   
     return (
-    
+     
         <SafeAreaView style={{flex: 1}}>
             <ScrollView>
                 <View style={[globalStyles.container, {backgroundColor: '#679297', justifyContent: 'center', padding: 20, paddingBottom: 50}]}>
@@ -119,4 +132,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Login;
+export default withReducer('login', reducer)(Login)

@@ -10,7 +10,8 @@ import store from './store/index';
 export default function App() {
   return (
     <Provider store={store}>
-      <Profile/>
+      {/* <Profile/> */}
+      <Login/>
     </Provider>      
   );
 }

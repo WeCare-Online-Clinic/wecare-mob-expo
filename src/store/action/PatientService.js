@@ -6,7 +6,7 @@ class PatientService {
 
     
     getPatient() {
-        return axios.get(PATIENT_API_BASE_URL + '/getNurseProfile/' + 1028);
+        return axios.get(PATIENT_API_BASE_URL + '/getPatientProfile/' + 200005);
     }
     
 }
