@@ -5,7 +5,7 @@ import { styles } from '../../../styles/global';
 import RequestButton from '../../../components/Button';
 
 
-export default function ViewReport(){
+const ViewReport = () =>{
 
     const arrow = 'chevron-right';
 
@@ -61,3 +61,5 @@ export default function ViewReport(){
         </View>
     )
 }
+
+export default ViewReport;

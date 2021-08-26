@@ -14,6 +14,8 @@ import Reports from './src/Reports/Reports';
 import Dashboard from './src/Dashboard/Dashboard';
 
 import DashboardStack from './routes/dashboardStack';
+import HistoryStack from './routes/historyStack';
+import ReportStack from './routes/reportsStack';
 // const Login = React.lazy(() => import('./src/Login/Login'))
 // const Profile = React.lazy(() => import('./src/Profile/Profile'))
 
@@ -22,8 +24,9 @@ import DashboardStack from './routes/dashboardStack';
 export default function App() {
   return (
     // <Provider store={store}>
-      
-      <DashboardStack/>
+       
+      // <DashboardStack/>
+      <ReportStack/>
      
     // </Provider>      
   );
