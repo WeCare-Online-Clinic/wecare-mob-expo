@@ -26,8 +26,8 @@ export default function App() {
     // <Provider store={store}>
        
       // <DashboardStack/>
-      <ReportStack/>
-     
+      // <ReportStack/>
+     <HistoryStack/>
     // </Provider>      
   );
 }

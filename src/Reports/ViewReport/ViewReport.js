@@ -5,23 +5,21 @@ import { styles } from '../../../styles/global';
 import RequestButton from '../../../components/Button';
 
 
-export default function Profile({navigation}){
+const ViewReport = () =>{
 
     const arrow = 'chevron-right';
-
-    const userId = navigation.getParam('userId')
 
     return (
         <View style={[styles.container, {
             flexDirection: "column"
           }]}>
-            
+
             <SafeAreaView style={styles.scrollContainer}>
                 <ScrollView style={styles.scrollView}>
                     <View style={{padding: 10}}>
                         <View style={[styles.mainCard, {flexDirection: 'row'}]}>
-                            <Text style={[styles.title, {flex: 1}]}>Next Clinic</Text>
-                            <Text style={[styles.title, {fontWeight: 'bold'}]}>Eye Clinic</Text>
+                            <Text style={[styles.title, {flex: 1}]}>ECG</Text>
+                            <Text style={[styles.title, {flex: 1, fontWeight: 'bold', alignSelf: 'flex-end'}]}>Cardiology</Text>
                         </View>
                         <View>
                             <View style={styles.whitecard}>
@@ -31,18 +29,8 @@ export default function Profile({navigation}){
                                         <Text style={styles.pBold}>2021/09/11</Text>
                                     </View>
                                     <View style={{flex: 6}}>
-                                        <Text style={styles.p}>Test</Text>
+                                        <Text style={styles.p}>Time</Text>
                                         <Text style={styles.pBold}>8.30 AM</Text>
-                                    </View>
-                                </View>
-                                <View style={[styles.row]}>
-                                    <View style={{flex: 6}}>
-                                        <Text style={styles.p}>Clinic</Text>
-                                        <Text style={styles.pBold}>Cardiology</Text>
-                                    </View>
-                                    <View style={{flex: 6}}>
-                                        <Text style={styles.p}>Room No</Text>
-                                        <Text style={styles.pBold}>Room 50</Text>
                                     </View>
                                 </View>
                                 <View style={[styles.row]}>
@@ -51,18 +39,18 @@ export default function Profile({navigation}){
                                         <Text style={styles.pBold}>Dr. Uditha Bulugahapitiya</Text>
                                     </View>
                                 </View>
-                                <View style={styles.row}>
-                                    <View style={{flex: 11}}>
-                                        <Text style={styles.p}>Repots</Text>
-                                        <Text style={styles.pBold}>MRI Scan</Text>
-                                    </View>
-                                    <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={35} color={'#1B3E72'}/>
+                                <View style={[styles.row, {alignSelf: 'center', margin: 0}]}>
+                                    <View style={styles.boxBorder}>
+                                        <Text style={{alignSelf: 'center'}}>Report data</Text>
                                     </View>
                                 </View>
                                 <View style={styles.row}>
-                                    <View style={{flex: 1}}>
-                                        <RequestButton text='Request To Change' />
+                                    <View style={{flex: 2}}>
+                                        <RequestButton text='Previous' />                                        
+                                    </View>
+                                    <View style={{flex: 2}}></View>
+                                    <View style={{flex: 2}}>
+                                        <RequestButton text='Next' />                                        
                                     </View>
                                 </View>                              
                             </View>
@@ -73,3 +61,5 @@ export default function Profile({navigation}){
         </View>
     )
 }
+
+export default ViewReport;

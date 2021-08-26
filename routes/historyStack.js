@@ -10,7 +10,7 @@ const screens = {
         screen: History,
         navigationOptions: {
             title: 'History',            
-        }
+        } 
     },
     ViewClinic: {
         screen: ViewClinic,
