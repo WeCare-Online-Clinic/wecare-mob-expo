@@ -65,3 +65,4 @@ export function setLoginUser(user) {
     }
   }
 
+export let userId;

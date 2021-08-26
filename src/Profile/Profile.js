@@ -7,12 +7,13 @@ import * as Actions from '../store/action/PatientAction';
 import withReducer from '../../store/withReducer';
 import reducer from '../store/reducer/index';
 import PatientData from './PatientData';
+import { userId } from '../Login/Auth';
 // import ActionButton from '../../components/Button';
 
 
 const Profile = () => {
 
-    
+    const userIdd = userId;
 
     const dispatch = useDispatch();
 
@@ -23,6 +24,7 @@ const Profile = () => {
     
     const reducerData = useSelector(({ patients }) =>patients.managePatient );
     console.log('check list', reducerData.patientList);
+    console.log('id', userIdd)
     const patientList = reducerData.patientList;
     const ptlist = PatientData
     return (
