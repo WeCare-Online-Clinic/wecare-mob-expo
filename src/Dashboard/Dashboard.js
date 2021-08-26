@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
+=======
+import React from 'react';
+>>>>>>> 6a5378c0df73ccc8587b97ab572d111a5e093eec
 import{ Text, View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Image } from 'react-native'; 
 import { styles } from '../../styles/global';
 import Cal from '../../components/Calender'; 
@@ -9,6 +13,7 @@ const Separator = () => (
     <View style={styles.separator} />
   );
 
+<<<<<<< HEAD
 const Dashboard = ({navigation}) => {
 
     const [userData, setUserData] = useState({
@@ -21,6 +26,15 @@ const Dashboard = ({navigation}) => {
     } 
     const viewClinic = () => { 
         navigation.push('ViewClinic', userData);
+=======
+const Dashboard = () => {
+
+    const viewNext = () => {
+        // navigation.navigate('NextClinic');
+    } 
+    const viewClinic = () => {
+        // navigation.navigate('ViewClinic');
+>>>>>>> 6a5378c0df73ccc8587b97ab572d111a5e093eec
     }  
 
     return(

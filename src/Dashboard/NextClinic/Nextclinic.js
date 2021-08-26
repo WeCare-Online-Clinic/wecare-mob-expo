@@ -5,12 +5,19 @@ import { styles } from '../../../styles/global';
 import RequestButton from '../../../components/Button';
 
 
+<<<<<<< HEAD
 export default function Profile({navigation}){
 
     const arrow = 'chevron-right';
 
     const userId = navigation.getParam('userId')
 
+=======
+export default function Profile(){
+
+    const arrow = 'chevron-right';
+
+>>>>>>> 6a5378c0df73ccc8587b97ab572d111a5e093eec
     return (
         <View style={[styles.container, {
             flexDirection: "column"
