@@ -1,14 +1,18 @@
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
 import { styles } from '../styles/global';
-import Reports from '../src/Reports/Reports'
-import ViewReport from '../src/Reports/ViewReport/ViewReport'
+import Reports from '../src/Reports/Reports';
+import ViewReport from '../src/Reports/ViewReport/ViewReport';
+import Header from '../utils/Header';
+import React from 'react';
 
 const screens = {
     Reports: {
         screen: Reports,
-        navigationOptions: {
-            title: 'Reports',            
+        navigationOptions: ({ navigation }) =>{
+            return {
+                headerTitle: () => <Header navigation={navigation} title='Reports'/>,            
+            }
         }
     },
     ViewReport: {

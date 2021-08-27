@@ -13,9 +13,11 @@ import History from './src/History/History';
 import Reports from './src/Reports/Reports';
 import Dashboard from './src/Dashboard/Dashboard';
 
-import DashboardStack from './routes/dashboardStack';
-import HistoryStack from './routes/historyStack';
-import ReportStack from './routes/reportsStack';
+import Navigator from './routes/drawer';
+
+// import DashboardStack from './routes/dashboardStack';
+// import HistoryStack from './routes/historyStack';
+// import ReportStack from './routes/reportsStack';
 // const Login = React.lazy(() => import('./src/Login/Login'))
 // const Profile = React.lazy(() => import('./src/Profile/Profile'))
 
@@ -27,7 +29,7 @@ export default function App() {
        
       // <DashboardStack/>
       // <ReportStack/>
-     <HistoryStack/>
+     <Navigator/>
     // </Provider>      
   );
 }

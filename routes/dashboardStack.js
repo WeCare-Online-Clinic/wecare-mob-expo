@@ -4,12 +4,16 @@ import { styles } from '../styles/global';
 import Dashboard from '../src/Dashboard/Dashboard'
 import ViewClinic from '../src/Dashboard/ViewClinic/ViewClinic'
 import NextClinic from '../src/Dashboard/NextClinic/Nextclinic'
+import Header from '../utils/Header';
+import React from 'react';
 
 const screens = {
     Dashboard: {
         screen: Dashboard,
-        navigationOptions: {
-            title: 'Dashboard',            
+        navigationOptions: ({ navigation }) =>{
+            return {
+                headerTitle: () => <Header navigation={navigation} title='Dash Board'/>,            
+            }
         }
     },
     ViewClinic: {
@@ -29,7 +33,7 @@ const screens = {
 const DashboardStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
         //default option for all screens
-        headerTintColor: '#1B3E72',
+        
         
     }   
 });
