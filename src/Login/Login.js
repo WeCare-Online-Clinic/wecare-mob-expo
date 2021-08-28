@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, TextInput, View, Text, Image, SafeAreaView, ScrollView, Button, Pressable } from 'react-native';
 import {styles as globalStyles } from '../../styles/global';
-import * as Action from './actions/login.action'
 import { useDispatch } from 'react-redux'
-import reducer from './reducers/login.reducer'
-import withReducer from '../../store/withReducer';
+import * as Action from '../../redux/actions/loginAction'
+import Constants from '../../utils/Constants';
+import axios from 'axios';
 // import { auto } from 'async';
 
 
-const Login = () =>  { 
+const Login = ({ navigation }) =>  { 
 
     
     const [userName, setUserName] = useState('');
@@ -24,9 +24,32 @@ const Login = () =>  {
         let data = {email: userName, password: password}
         // let data ={email:'admin@gmail.com', password: 'admin@1234'};
       
-        dispatch(Action.submitLogin(data))
-        console.log('pass')
+    //    dispatch(Action.submitLogin(data))
+        const request = axios.post(Action.USER_LOGIN_URL, data)
+
+        request
+        .then((responce) => {
+           console.log('responce', responce.data) 
+           Constants.LOGGED_IN_USER = responce.data
+       
+               console.log('login res data', responce.data)
+               setUserRole(responce.data.role)
+               setUserID(responce.data.id)
+               console.log('fdfd', userRole)
+
+               if(responce.data.role === 'patient'){
+                   navigation.navigate('Drawer')
+               }
+               else{
+                   console.log('bad user')
+               }
+        })
+        .catch((error) => {
+            console.log(error)
+        })
         
+       
+       
         // e.preventDefault()
         // const isValid = validation()
 
@@ -101,7 +124,7 @@ const Login = () =>  {
                             <TextInput
                                 style={globalStyles.input}
                                 placeholder='Password'
-                                secureTextEntry= {true}
+                                // secureTextEntry= {true}
                                 onChangeText={text => setPassword(text)}
                                 defaultValue={password}
                             />
@@ -132,4 +155,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default withReducer('login', reducer)(Login)
+export default Login;

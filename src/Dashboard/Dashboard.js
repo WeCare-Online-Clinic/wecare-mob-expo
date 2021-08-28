@@ -3,7 +3,7 @@ import{ Text, View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Image } fro
 import { styles } from '../../styles/global';
 import Cal from '../../components/Calender'; 
 import ActionButton from '../../components/Button'; 
-
+import {useSelector} from 'react-redux';
 
 const Separator = () => (
     <View style={styles.separator} />
@@ -15,6 +15,7 @@ const Dashboard = ({navigation}) => {
         userId: 55555,
         clinicId: 666666,
     });
+    
 
     const viewNext = () => {
         navigation.push('NextClinic', userData);
@@ -35,6 +36,7 @@ const Dashboard = ({navigation}) => {
                             <View style={[styles.card, {flex: 2,}]}>
                                 <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
                                     <Text style={styles.H1}>Next Cilic  - </Text>
+                                    <Text>{ navigation.getParam()}</Text>
                                     <View style={styles.txtLeft}><Text style={styles.H1}>Eye</Text></View>
                                 </View>
                                 <View style={[{flex: 6, flexDirection: "row" }]}>
