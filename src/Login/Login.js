@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, TextInput, View, Text, Image, SafeAreaView, ScrollView, Button, Pressable } from 'react-native';
 import {styles as globalStyles } from '../../styles/global';
-import { useDispatch } from 'react-redux'
-import * as Action from '../../redux/actions/loginAction'
+import { useDispatch, useSelector } from 'react-redux'
+import {logIn, USER_LOGIN_URL} from '../../redux/actions/loginAction'
 import Constants from '../../utils/Constants';
 import axios from 'axios';
 // import { auto } from 'async';
@@ -14,35 +14,42 @@ const Login = ({ navigation }) =>  {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     
-    const dispatch = useDispatch()
-
+    const dispatch = useDispatch()    
      
     const onLogin = (e) => {
         console.log({userName}, {password});
         console.log('onsubmit')
+    
+        
 
         let data = {email: userName, password: password}
         // let data ={email:'admin@gmail.com', password: 'admin@1234'};
       
     //    dispatch(Action.submitLogin(data))
-        const request = axios.post(Action.USER_LOGIN_URL, data)
-
+        const request = axios.post(USER_LOGIN_URL, data)
+        const userId = 200005
+        console.log('responce', request.data)
         request
         .then((responce) => {
-           console.log('responce', responce.data) 
-           Constants.LOGGED_IN_USER = responce.data
-       
-               console.log('login res data', responce.data)
-               setUserRole(responce.data.role)
-               setUserID(responce.data.id)
-               console.log('fdfd', userRole)
+            console.log('responce', responce.data)            
 
-               if(responce.data.role === 'patient'){
-                   navigation.navigate('Drawer')
-               }
-               else{
-                   console.log('bad user')
-               }
+            if(responce.data.role === 'patient'){
+                const userData = axios.get(Constants.API_BASE_URL + '/getPatientProfile/' + userId)
+
+                userData
+                    .then((result) => {
+                        dispatch(logIn(result.data))
+                        navigation.navigate('Drawer')
+                    })
+                    .catch((err) => {
+                        console.log('err', err)
+                    })
+
+                console.log('dddddddd')
+            }
+            else{
+                console.log('bad user')
+            }
         })
         .catch((error) => {
             console.log(error)

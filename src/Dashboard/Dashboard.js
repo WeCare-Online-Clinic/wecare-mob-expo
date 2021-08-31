@@ -3,7 +3,10 @@ import{ Text, View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Image } fro
 import { styles } from '../../styles/global';
 import Cal from '../../components/Calender'; 
 import ActionButton from '../../components/Button'; 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import Constants from '../../utils/Constants';
+import axios from 'axios';
+import { setUser } from '../../redux/actions/profleAction'
 
 const Separator = () => (
     <View style={styles.separator} />
@@ -11,17 +14,34 @@ const Separator = () => (
 
 const Dashboard = ({navigation}) => {
 
-    const [userData, setUserData] = useState({
-        userId: 55555,
-        clinicId: 666666,
-    });
+    const user = useSelector((state) => state);
+    console.log('userrrrrr', user)
+
+    const dispatch = useDispatch()
+
+    // const Id = 200005
+     console.log('user iddd', user.login.user[0])
+    // const userProfile = axios.get(Constants.API_BASE_URL + '/getPatientProfile/' + )
+
+    // userProfile
+    // .then((responce) => {
+    //     console.log('responce DASH', responce.data)  
+    //     dispatch(setUser(userProfile.data))      
+  
+    // })
+    // .catch((error) => {
+    //     console.log(error)
+    // })
+
     
 
+   
+
     const viewNext = () => {
-        navigation.push('NextClinic', userData);
+        navigation.push('NextClinic');
     } 
     const viewClinic = () => { 
-        navigation.push('ViewClinic', userData);
+        navigation.push('ViewClinic');
     }  
 
     return(

@@ -5,6 +5,7 @@ import React from 'react';
 import LogIn from '../src/Login/Login'
 import Drawer from './drawer'
 
+const Left = null
 
 const screens = {
     LogIn: {
@@ -20,7 +21,7 @@ const LogInStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
         //default option for all screens
         headerTintColor: '#1B3E72',
-        headerShown: false, 
+        headerShown: false,
         
     }   
 });

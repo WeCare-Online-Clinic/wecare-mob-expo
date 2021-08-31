@@ -1,21 +1,21 @@
 import * as Action from '../actions/loginAction'
 
 const initState = {
-    user: {},
+    user: [],
 }
 
-const login = (state = initState, action) => {
-    switch (action.type){
+const userProfile = (state = initState, {type, payload}) => {
+    switch (type){
+
         case Action.LOGIN_SUCCESS: {
             return {
-                ...initState,
- 
-                user: action.payload,
-            };
-        }  
+                ...state, 
+                user: payload,
+            }
+        }
         
         default: return state
     }
 }
 
-export default login
+export default userProfile
