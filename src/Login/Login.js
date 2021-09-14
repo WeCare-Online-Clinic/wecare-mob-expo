@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, TextInput, View, Text, Image, SafeAreaView, ScrollView, Button, Pressable } from 'react-native';
+import { StyleSheet, TextInput, View, Text, Alert, Image, SafeAreaView, ScrollView, Button, Pressable } from 'react-native';
 import {styles as globalStyles } from '../../styles/global';
 import { useDispatch, useSelector } from 'react-redux'
-import {logIn, USER_LOGIN_URL} from '../../redux/actions/loginAction'
+import {logIn, USER_LOGIN_URL, setNextClinic} from '../../redux/actions/loginAction'
 import Constants from '../../utils/Constants';
 import axios from 'axios';
 // import { auto } from 'async';
@@ -20,21 +20,32 @@ const Login = ({ navigation }) =>  {
         console.log({userName}, {password});
         console.log('onsubmit')
     
-        
+        Alert.alert(
+            "Alert Title",
+            "My Alert Msg",
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+        );
 
         let data = {email: userName, password: password}
-        // let data ={email:'admin@gmail.com', password: 'admin@1234'};
-      
-    //    dispatch(Action.submitLogin(data))
+        
+        
+
         const request = axios.post(USER_LOGIN_URL, data)
-        const userId = 200005
+        
         console.log('responce', request.data)
         request
         .then((responce) => {
-            console.log('responce', responce.data)            
+            console.log('responce', responce.data)           
 
             if(responce.data.role === 'patient'){
-                const userData = axios.get(Constants.API_BASE_URL + '/getPatientProfile/' + userId)
+                const userData = axios.get(Constants.API_BASE_URL + '/getPatientProfile/' + responce.data.id)
 
                 userData
                     .then((result) => {
@@ -49,12 +60,28 @@ const Login = ({ navigation }) =>  {
             }
             else{
                 console.log('bad user')
+               
             }
         })
         .catch((error) => {
             console.log(error)
         })
-        
+
+        const userId = 200004
+
+        const nextClinicData = axios.get(Constants.API_BASE_URL + '/getNextClinicDetails/' + userId) 
+
+    
+        nextClinicData
+        .then((result) => {
+            console.log('rNext clinic data', result.data)  
+            dispatch(setNextClinic(result.data))  
+    
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+          
        
        
         // e.preventDefault()
@@ -112,8 +139,8 @@ const Login = ({ navigation }) =>  {
     return (
      
         <SafeAreaView style={{flex: 1}}>
-            <ScrollView>
-                <View style={[globalStyles.container, {backgroundColor: '#679297', justifyContent: 'center', padding: 20, paddingBottom: 50}]}>
+            <ScrollView style={{flex: 1}}>
+                <View style={[globalStyles.container, {flex: 1, height: '100%', backgroundColor: '#679297', justifyContent: 'center', padding: 20, paddingBottom: 100, paddingTop: 100}]}>
                     <Image style={{width: 300, height: 150, alignSelf: 'center',}}
                                 source={require('./wecarelogo.png')}
                         />
@@ -138,6 +165,7 @@ const Login = ({ navigation }) =>  {
                             <Pressable style={styles.button} onPress={onLogin}>
                                 <Text style={styles.buttonText}>Log In</Text>
                             </Pressable>
+                            
                        </View>         
                 </View>
             </ScrollView>

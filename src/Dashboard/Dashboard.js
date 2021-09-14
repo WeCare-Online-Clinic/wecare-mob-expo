@@ -6,7 +6,8 @@ import ActionButton from '../../components/Button';
 import {useSelector, useDispatch} from 'react-redux';
 import Constants from '../../utils/Constants';
 import axios from 'axios';
-import { setUser } from '../../redux/actions/profleAction'
+import { setNextClinic } from '../../redux/actions/loginAction'
+import NextClinicCard from './../../components/NextClinicDataCard'
 
 const Separator = () => (
     <View style={styles.separator} />
@@ -14,28 +15,18 @@ const Separator = () => (
 
 const Dashboard = ({navigation}) => {
 
-    const user = useSelector((state) => state);
-    console.log('userrrrrr', user)
-
     const dispatch = useDispatch()
 
-    // const Id = 200005
-     console.log('user iddd', user.login.user[0])
-    // const userProfile = axios.get(Constants.API_BASE_URL + '/getPatientProfile/' + )
+    const reducerData = useSelector((state) => state.login.nextClinic[0])
 
-    // userProfile
-    // .then((responce) => {
-    //     console.log('responce DASH', responce.data)  
-    //     dispatch(setUser(userProfile.data))      
-  
-    // })
-    // .catch((error) => {
-    //     console.log(error)
-    // })
+    // const user = reducerData.login.nextClinic[0]
+    // const userId =  reducerData.login.user[0].id
 
     
+    console.log('nextClinicDates', reducerData)
 
    
+    
 
     const viewNext = () => {
         navigation.push('NextClinic');
@@ -48,35 +39,37 @@ const Dashboard = ({navigation}) => {
         <View style={[styles.container, {
             flexDirection: "column"
           }]}>
-            
+                          
             <SafeAreaView style={styles.scrollContainer}>
                 <ScrollView style={styles.scrollView}>
                     <View style={{padding: 10 }}>
                         <View style={styles.mainCard}>
-                            <View style={[styles.card, {flex: 2,}]}>
-                                <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
-                                    <Text style={styles.H1}>Next Cilic  - </Text>
-                                    <Text>{ navigation.getParam()}</Text>
-                                    <View style={styles.txtLeft}><Text style={styles.H1}>Eye</Text></View>
+                            
+                        <View style={[styles.card, {flex: 2,}]}>
+                            <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
+                                <Text style={styles.H1}>Next Cilic  - </Text>
+                                {/* <Text>{ navigation.getParam() }</Text> */}
+                                <View style={styles.txtLeft}><Text style={styles.H1}>Eye</Text></View>
+                            </View>
+                            <View style={[{flex: 6, flexDirection: "row" }]}>
+                                <View style={[styles.cardI, {flex: 2,}]}>
+                                    <Text style={styles.p}>Date </Text>
+                                    <Text style={styles.p}>Time </Text>
+                                    <Text style={styles.p}>Room No</Text>
+                                    <Text style={styles.p}>Doctor</Text>
                                 </View>
-                                <View style={[{flex: 6, flexDirection: "row" }]}>
-                                    <View style={[styles.cardI, {flex: 2,}]}>
-                                        <Text style={styles.p}>Date </Text>
-                                        <Text style={styles.p}>Time </Text>
-                                        <Text style={styles.p}>Room No</Text>
-                                        <Text style={styles.p}>Doctor</Text>
-                                    </View>
-                                    <View style={[styles.cardI, {flex: 6,}]}>
-                                        <Text style={styles.p}>- 2021/08/07</Text>
-                                        <Text style={styles.p}>- 8.30 AM</Text>
-                                        <Text style={styles.p}>- 65</Text>
-                                        <Text style={styles.p}>- Dr. Uditha</Text>
-                                    </View>
-                                </View>
-                                <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
-                                    <ActionButton text='Request >>' onPress={viewNext}/>
+                                <View style={[styles.cardI, {flex: 6,}]}>
+                                    <Text style={styles.p}>- 2021/08/07</Text>
+                                    <Text style={styles.p}>- 8.30 AM</Text>
+                                    <Text style={styles.p}>- 65</Text>
+                                    <Text style={styles.p}>- Dr. Uditha</Text>
                                 </View>
                             </View>
+                            <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
+                                <ActionButton text='Request >>' onPress={viewNext}/>
+                            </View>
+                        </View>
+                            
                         {/* <view></view> */}
                             <View style={{alignSelf: 'center', padding: 10}}>
                                 <Cal/>

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import store from './redux/store/store';
+import {  useSelector } from 'react-redux'
 // import Auth from './src/Login/Auth';
 // import history from './@history'
 import { Router, Route, Switch } from 'react-router-dom';
@@ -14,6 +15,7 @@ import Reports from './src/Reports/Reports';
 import Dashboard from './src/Dashboard/Dashboard';
 
 import Navigator from './routes/loginStack';
+import HistoryStack from './routes/historyStack';
 
 // import DashboardStack from './routes/dashboardStack';
 // import HistoryStack from './routes/historyStack';
@@ -44,6 +46,7 @@ export class App extends Component {
       // <Navigator/>
       <Provider store={store}> 
         {/* <Login/> */}
+        {/* <HistoryStack/>  */}
         <Navigator/>
       </Provider>
     );

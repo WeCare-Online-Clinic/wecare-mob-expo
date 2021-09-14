@@ -7,7 +7,7 @@ import ProfileStack from './profileStack'
 // import Profile from './../src/Profile/Profile'
 
 
-const RootDrawerNavigator = createDrawerNavigator({
+const screens = {
     Dashboard: {
         screen: DashboardStack,
     },
@@ -21,6 +21,16 @@ const RootDrawerNavigator = createDrawerNavigator({
         screen: ReportStack,
     },
 
+}
+
+const RootDrawerNavigator = createDrawerNavigator(screens, {
+    defaultNavigationOptions: {
+
+        
+
+
+    }
 })
+
 
 export default createAppContainer(RootDrawerNavigator);

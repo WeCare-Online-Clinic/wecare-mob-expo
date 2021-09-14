@@ -14,7 +14,8 @@ const Profile = ({ navigation }) => {
 
     
        
-    const user = useSelector((state) => state);
+    const user = useSelector((state) => state)
+    
     const userData = user.login.user[0]
 
     console.log('name', userData.name)
@@ -30,6 +31,8 @@ const Profile = ({ navigation }) => {
         <View style={[styles.container, {
             flexDirection: "column"
           }]}>
+
+              {/* <View style={[styles.pBold, {padding: 10}]}>{new Date().getFullYear()}/ {new Date().getDate()}/ {new Date().getMonth() + 1} </View> */}
             
             <SafeAreaView style={styles.scrollContainer}>
                 <ScrollView style={styles.scrollView}>
@@ -44,7 +47,15 @@ const Profile = ({ navigation }) => {
                                 />
                             </View>
                             <View style={styles.mainCard}>
-                                <Text style={[styles.title, {alignSelf: 'center'}]}>{userData.name}</Text>
+                                
+                                <View style={styles.row}>
+                                    <View style={{flex: 8}}>
+                                        <Text style={[styles.title, {alignSelf: 'center'}]}>{userData.name}</Text>
+                                    </View>
+                                    <View style={{flex: 1, justifyContent: 'center'}}>
+                                        <FontAwesome5  name={arrow} size={25} color={'#1B3E72'} onPress={editField}/>
+                                    </View>
+                                </View>
                             </View>
                             <View style={styles.whitecard}>
                                 <View style={styles.row}>
@@ -53,7 +64,7 @@ const Profile = ({ navigation }) => {
                                         <Text style={styles.pBold}>{userData.address}</Text>
                                     </View>
                                     <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
+                                        <FontAwesome5  name={arrow} size={25} color={'#1B3E72'} onPress={editField}/>
                                     </View>
                                 </View>
                                 <View style={styles.row}>
@@ -62,7 +73,7 @@ const Profile = ({ navigation }) => {
                                         <Text style={styles.pBold}>{userData.contact}</Text>
                                     </View>
                                     <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
+                                        <FontAwesome5  name={arrow} size={25} color={'#1B3E72'} onPress={editField}/>
                                     </View>
                                 </View>
                                 <View style={styles.row}>
@@ -70,8 +81,17 @@ const Profile = ({ navigation }) => {
                                         <Text style={styles.p}>Email</Text>
                                         <Text style={styles.pBold}>{userData.email}</Text>
                                     </View>
-                                    <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
+                                </View>
+                                <View style={styles.row}>
+                                    <View style={{flex: 11}}>
+                                        <Text style={styles.p}>Gender</Text>
+                                        <Text style={styles.pBold}>{userData.gender == 'f' ? 'Female' : 'Male'}</Text>
+                                    </View>
+                                </View>
+                                <View style={styles.row}>
+                                    <View style={{flex: 11}}>
+                                        <Text style={styles.p}>Birth Date</Text>
+                                        <Text style={styles.pBold}>{userData.birthdate.slice(0, userData.birthdate.indexOf("T"))}</Text>
                                     </View>
                                 </View>
                                 <View style={styles.row}>
@@ -79,8 +99,17 @@ const Profile = ({ navigation }) => {
                                         <Text style={styles.p}>NIC Number</Text>
                                         <Text style={styles.pBold}>{userData.nic}</Text>
                                     </View>
-                                    <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={35} color={'#1B3E72'} onPress={editField}/>
+                                </View>
+                                <View style={styles.row}>
+                                    <View style={{flex: 11}}>
+                                        <Text style={styles.p}>Registered Date</Text>
+                                        <Text style={styles.pBold}>{userData.registeredDate.slice(0, userData.registeredDate.indexOf("T"))}</Text>
+                                    </View>
+                                </View>
+                                <View style={styles.row}>
+                                    <View style={{flex: 11}}>
+                                        <Text style={styles.p}>Clinic ID</Text>
+                                        <Text style={styles.pBold}>{userData.id}</Text>
                                     </View>
                                 </View>
                             </View>

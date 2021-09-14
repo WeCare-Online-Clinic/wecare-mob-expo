@@ -1,7 +1,9 @@
 import * as Action from '../actions/loginAction'
 
 const initState = {
+    isLogin: false,
     user: [],
+    nextClinic: [],
 }
 
 const userProfile = (state = initState, {type, payload}) => {
@@ -11,6 +13,14 @@ const userProfile = (state = initState, {type, payload}) => {
             return {
                 ...state, 
                 user: payload,
+                isLogin: true
+            }
+        }
+
+        case Action.NEXT_CLINIC: {
+            return {
+                ...state,
+                nextClinic: payload,
             }
         }
         
