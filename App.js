@@ -46,8 +46,8 @@ export class App extends Component {
       // <Navigator/>
       <Provider store={store}> 
         {/* <Login/> */}
-        {/* <HistoryStack/>  */}
-        <Navigator/>
+        <HistoryStack/> 
+        {/* <Navigator/> */}
       </Provider>
     );
 

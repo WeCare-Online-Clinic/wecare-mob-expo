@@ -20,18 +20,7 @@ const Login = ({ navigation }) =>  {
         console.log({userName}, {password});
         console.log('onsubmit')
     
-        Alert.alert(
-            "Alert Title",
-            "My Alert Msg",
-            [
-              {
-                text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
-              },
-              { text: "OK", onPress: () => console.log("OK Pressed") }
-            ]
-        );
+       
 
         let data = {email: userName, password: password}
         
@@ -60,6 +49,14 @@ const Login = ({ navigation }) =>  {
             }
             else{
                 console.log('bad user')
+                Alert.alert(
+                    "Invalid Login",
+                    "My Alert Msg",
+                    [
+                      
+                      { text: "OK", onPress: () => console.log("OK Pressed") }
+                    ]
+                );
                
             }
         })

@@ -5,9 +5,12 @@ import { styles } from '../../../styles/global';
 import RequestButton from '../../../components/Button';
 
 
-export default function Profile(){
+export default function Profile({navigation}){
 
     const arrow = 'chevron-right';
+
+    const clinicData = navigation.getParam('row')
+    console.log("Cliniccccccc " )
 
     return (
         <View style={[styles.container, {
@@ -56,16 +59,7 @@ export default function Profile(){
                                     <View style={{flex: 1, justifyContent: 'center'}}>
                                         <FontAwesome5  name={arrow} size={35} color={'#1B3E72'}/>
                                     </View>
-                                </View>
-                                <View style={styles.row}>
-                                    <View style={{flex: 2}}>
-                                        <RequestButton text='Previous' />                                        
-                                    </View>
-                                    <View style={{flex: 2}}></View>
-                                    <View style={{flex: 2}}>
-                                        <RequestButton text='Next' />                                        
-                                    </View>
-                                </View>                              
+                                </View>                             
                             </View>
                         </View>
                     </View>
