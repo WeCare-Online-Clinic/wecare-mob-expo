@@ -6,6 +6,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 
 export const NEXT_CLINIC = 'NEXT_CLINIC'
 
+export const PAST_CLINIC = 'PAST_CLINIC'
+
 export const LOGIN_SET_USER = 'LOGIN_SET_USER'
 
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT'
@@ -26,6 +28,12 @@ export const setNextClinic = (clinicdata) => {
     }
 }
 
+export const setPastClinic = (clinicdata) => {
+    return {
+        type: PAST_CLINIC,
+        payload: clinicdata,
+    }
+}
 
 
 

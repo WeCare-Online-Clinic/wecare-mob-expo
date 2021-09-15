@@ -2,8 +2,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
 import { styles } from '../styles/global';
 import History from '../src/History/History'
-import ViewClinic from '../src/Dashboard/ViewClinic/ViewClinic'
-import NextClinic from '../src/Dashboard/NextClinic/Nextclinic'
+import ViewClinic from '../src/History/ViewPastClinic/ViewPastClinic'
 import Header from '../utils/Header';
 import React from 'react';
 

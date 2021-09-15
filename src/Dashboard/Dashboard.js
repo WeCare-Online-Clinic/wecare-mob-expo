@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import{ Text, View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Image } from 'react-native'; 
 import { styles } from '../../styles/global';
 import Cal from '../../components/Calender'; 
@@ -8,24 +8,88 @@ import Constants from '../../utils/Constants';
 import axios from 'axios';
 import { setNextClinic } from '../../redux/actions/loginAction'
 import NextClinicCard from './../../components/NextClinicDataCard'
+import {USER_LOGIN_URL, setPastClinic} from '../../redux/actions/loginAction'
 
 const Separator = () => (
     <View style={styles.separator} />
-  );
+  )
+
+  async function get_next_clinic_data(userId) {
+
+    let clinic_data = []
+
+  
+    try {
+      await axios
+        .get(Constants.API_BASE_URL + '/getNextClinicDetails/' + userId)
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("dfdfdf", res)
+            clinic_data = res.data
+          }
+        })
+      return clinic_data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function get_past_clinic_data(userId) {
+
+    let clinic_data = []
+  
+    try {
+      await axios
+        .get(Constants.API_BASE_URL + '/patient/clinic/history/list/' + userId)
+        .then((res) => {
+          if (res.status == 200) {
+            // console.log(res)
+            clinic_data = res.data
+          }
+        })
+      return clinic_data
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 const Dashboard = ({navigation}) => {
 
     const dispatch = useDispatch()
 
-    const reducerData = useSelector((state) => state.login.nextClinic[0])
+    const user = useSelector((state) => state);
+    const userData = user.login.user[0]
+    // const userId = userData.id
+    const userId = 200004
 
-    // const user = reducerData.login.nextClinic[0]
-    // const userId =  reducerData.login.user[0].id
+    useEffect(() => {
+        get_next_clinic_data(userId).then((res) => {
+          setClinicData(res)
+          setNextClinicData(res[0])
+           console.log(res)
+        })
+        get_past_clinic_data(userId).then((res) => {
+            setPastClinicData(res)
+            // console.log(res)
+          })
+      }, [])
+
+    const [clinicData, setClinicData] = useState([])
+    const [nextClinicData, setNextClinicData] = useState([])
+    const [pastClinicData, setPastClinicData] = useState([])
+    
+    // const dataaaa = nextClinicData.clinicDate
+    
+    // const [data, setData] = useState()
+    console.log('pasttts ' , pastClinicData[0])
+  
+    // const renderData = (data) => {
+    //   setData(data)
+    // }
+  
+    
 
     
-    console.log('nextClinicDates', reducerData)
-
-   
     
 
     const viewNext = () => {
@@ -49,33 +113,26 @@ const Dashboard = ({navigation}) => {
                             <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
                                 <Text style={styles.H1}>Next Cilic  - </Text>
                                 {/* <Text>{ navigation.getParam() }</Text> */}
-                                <View style={styles.txtLeft}><Text style={styles.H1}>Eye</Text></View>
+                                <View style={styles.txtLeft}><Text style={styles.H1}>{nextClinicData.id && nextClinicData.clinicDate.nurse.clinic.name}</Text></View>
                             </View>
-                            <View style={[{flex: 6, flexDirection: "row" }]}>
+                            <View style={[{flex: 8, flexDirection: "row" }]}>
                                 <View style={[styles.cardI, {flex: 2,}]}>
                                     <Text style={styles.p}>Date </Text>
                                     <Text style={styles.p}>Time </Text>
-                                    <Text style={styles.p}>Room No</Text>
-                                    <Text style={styles.p}>Doctor</Text>
+                                    <Text style={styles.p}>Queue No</Text>
                                 </View>
-                                <View style={[styles.cardI, {flex: 6,}]}>
-                                    <Text style={styles.p}>- 2021/08/07</Text>
-                                    <Text style={styles.p}>- 8.30 AM</Text>
-                                    <Text style={styles.p}>- 65</Text>
-                                    <Text style={styles.p}>- Dr. Uditha</Text>
+                                <View style={[styles.cardI, {flex: 4,}]}>
+                                    <Text style={styles.p}>- {nextClinicData.id && nextClinicData.clinicDate.date}</Text>
+                                    <Text style={styles.p}>- {nextClinicData.id && nextClinicData.time}</Text>
+                                    <Text style={styles.p}>- {nextClinicData.id && nextClinicData.queueNo}</Text>
                                 </View>
                             </View>
                             <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
-                                <ActionButton text='Request >>' onPress={viewNext}/>
+                                <ActionButton text='View >>' onPress={() => {dispatch(setNextClinic(clinicData)), navigation.navigate('ViewNextClinic')}}/>
                             </View>
                         </View>
-                            
-                        {/* <view></view> */}
-                            <View style={{alignSelf: 'center', padding: 10}}>
-                                <Cal/>
-                            </View>
 
-                            <View style={[styles.card, {padding: 10}]}>
+                            {/* <View style={[styles.card, {padding: 10}]}>
                                 <Text style={{alignSelf: 'center'}}>FBC</Text>
                                 <Image style={{width: 300, height: 150, alignSelf: 'center', marginVertical: 20}}
                                     source={require('./graph.png')}
@@ -87,29 +144,29 @@ const Dashboard = ({navigation}) => {
                                 <Image style={{width: 300, height: 150, alignSelf: 'center', marginVertical: 20}}
                                     source={require('./graph.png')}
                                 />
-                            </View>
+                            </View> */}
 
                             <View style={[styles.card, {flex: 2,}]}>
                                 <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
                                     <Text style={styles.H1}>Past Clinics  - </Text>
-                                    <View style={styles.txtLeft}><Text style={styles.H1}>Eye</Text></View>
+                                    <View style={styles.txtLeft}><Text style={styles.H1}>{pastClinicData[0] && pastClinicData[0].doctor.clinic.name}</Text></View>
                                 </View>
-                                <View style={[{flex: 6, flexDirection: "row" }]}>
+                                <View style={[{flex: 8, flexDirection: "row" }]}>
                                     <View style={[styles.cardI, {flex: 2,}]}>
                                         <Text style={styles.p}>Date </Text>
                                         <Text style={styles.p}>Time </Text>
-                                        <Text style={styles.p}>Room No</Text>
+                                        <Text style={styles.p}>Queue No</Text>
                                         <Text style={styles.p}>Doctor</Text>
                                     </View>
-                                    <View style={[styles.cardI, {flex: 6,}]}>
-                                        <Text style={styles.p}>- 2021/58/07</Text>
-                                        <Text style={styles.p}>- 8.30 AM</Text>
-                                        <Text style={styles.p}>- 65</Text>
-                                        <Text style={styles.p}>- Dr. Uditha</Text>
+                                    <View style={[styles.cardI, {flex: 4,}]}>
+                                        <Text style={styles.p}>- {pastClinicData[0] && pastClinicData[0].clinicAppointment.clinicDate.date}</Text>
+                                        <Text style={styles.p}>- {pastClinicData[0] && pastClinicData[0].clinicAppointment.time}</Text>
+                                        <Text style={styles.p}>- {pastClinicData[0] && pastClinicData[0].clinicAppointment.queueNo}</Text>
+                                        <Text style={styles.p}>- {pastClinicData[0] && pastClinicData[0].doctor.name}</Text>
                                     </View>
                                 </View>
                                 <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
-                                    <ActionButton text='View >>' onPress={viewClinic}/>
+                                    <ActionButton text='View >>' onPress={() => {dispatch(setPastClinic(pastClinicData)), navigation.push('ViewPastClinic')}}/>
                                 </View>
                             </View>
 

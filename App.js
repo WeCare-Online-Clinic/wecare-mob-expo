@@ -16,6 +16,7 @@ import Dashboard from './src/Dashboard/Dashboard';
 
 import Navigator from './routes/loginStack';
 import HistoryStack from './routes/historyStack';
+import DashStack from './routes/dashboardStack';
 
 // import DashboardStack from './routes/dashboardStack';
 // import HistoryStack from './routes/historyStack';
@@ -47,7 +48,8 @@ export class App extends Component {
       <Provider store={store}> 
         {/* <Login/> */}
         {/* <HistoryStack/>  */}
-        <Navigator/>
+        <DashStack/>
+        {/* <Navigator/> */}
       </Provider>
     );
 

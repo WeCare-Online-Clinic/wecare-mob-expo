@@ -2,8 +2,8 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
 import { styles } from '../styles/global';
 import Dashboard from '../src/Dashboard/Dashboard'
-import ViewClinic from '../src/Dashboard/ViewClinic/ViewClinic'
-import NextClinic from '../src/Dashboard/NextClinic/Nextclinic'
+import ViewNextClinic from '../src/Dashboard/ViewNextClinic/ViewNextClinic'
+import ViewPastClinic from '../src/Dashboard/ViewPastClinic/ViewPastClinic'
 import Header from '../utils/Header';
 import React from 'react';
 
@@ -16,16 +16,16 @@ const screens = {
             }
         }
     },
-    ViewClinic: {
-        screen: ViewClinic,
+    ViewNextClinic: {
+        screen: ViewNextClinic,
         navigationOptions: {
-            title: 'View Clinic'
+            title: 'Next Clinics'
         }
     },
-    NextClinic: {
-        screen: NextClinic,
+    ViewPastClinic: {
+        screen: ViewPastClinic,
         navigationOptions: {
-            title: 'Next Clinic'
+            title: 'Past Clinic'
         }
     }
 }

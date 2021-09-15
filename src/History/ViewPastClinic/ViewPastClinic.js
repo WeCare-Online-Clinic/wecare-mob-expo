@@ -10,7 +10,7 @@ export default function Profile({navigation}){
 
     const arrow = 'chevron-right';
 
-    const clinicData =  useSelector((state) => state.login.nextClinic)
+    const clinicData =  useSelector((state) => state.login.pastClinic)
 
     console.log("Cliniccccccc ",  clinicData)
 
@@ -45,12 +45,42 @@ export default function Profile({navigation}){
                                     <View style={{flex: 6}}>
                                         <Text style={styles.p}>Queue No</Text>
                                         <Text style={styles.pBold}>{clinicData.clinicAppointment.queueNo}</Text>
-                                    </View>
+                                    </View> 
                                 </View>
                                 <View style={[styles.row]}>
                                     <View style={{flex: 6}}>
                                         <Text style={styles.p}>Doctor</Text>
                                         <Text style={styles.pBold}>Dr. {clinicData.doctor.name}</Text>
+                                    </View>
+                                </View>
+                                <View style={[styles.row]}>
+                                    <View style={{flex: 6}}>
+                                        <Text style={styles.p}>Note</Text>
+                                        <Text style={styles.pBold}>{clinicData.note}</Text>
+                                    </View>
+                                </View>
+                                <View style={[styles.row]}>
+                                    <View style={{flex: 6}}>
+                                        <Text style={styles.p}>Diagnosis</Text>
+                                        <Text style={styles.pBold}>{clinicData.diagnosis}</Text>
+                                    </View>
+                                </View>
+                                <View style={[styles.row]}>
+                                    <View style={{flex: 6}}>
+                                        <Text style={styles.p}>Prescription</Text>
+                                        {clinicData.prescription == null ? 'N/A' : 
+                                        clinicData.prescription.map((row, index) => (
+                                           <View key={index} style={{marginVertical: 5}}>
+                                                <Text style={styles.pBold}>{row.medicine} - {row.quantity}</Text>
+                                                <View style={[styles.row, {marginVertical: 1}]}>
+                                                    <Text style={[styles.pBold, {fontWeight: 'normal', fontSize: 15, padding: 5}]}>Morining - {row.morning} </Text>
+                                                    <Text style={[styles.pBold, {fontWeight: 'normal', fontSize: 15, padding: 5}]}>Aftrenoon - {row.afternoon} </Text>
+                                                    <Text style={[styles.pBold, {fontWeight: 'normal', fontSize: 15, padding: 5}]}>Evening - {row.evening} </Text>
+                                                </View>
+                                                
+                                           </View>
+                                        )) 
+                                        }
                                     </View>
                                 </View>
                                 <View style={styles.row}>
@@ -59,7 +89,7 @@ export default function Profile({navigation}){
                                         <Text style={styles.pBold}>{clinicData.labTests == null ? 'N/A' : clinicData.labTests}</Text>
                                     </View>
                                     <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={35} color={'#1B3E72'}/>
+                                        <FontAwesome5  name={arrow} size={20} color={'#1B3E72'}/>
                                     </View>
                                 </View>                             
                             </View>

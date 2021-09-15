@@ -3,7 +3,8 @@ import * as Action from '../actions/loginAction'
 const initState = {
     isLogin: false,
     user: [],
-    nextClinic:{},
+    nextClinic: [],
+    pastClinic: {}
 }
 
 const userProfile = (state = initState, {type, payload}) => {
@@ -21,6 +22,13 @@ const userProfile = (state = initState, {type, payload}) => {
             return {
                 ...state,
                 nextClinic: payload,
+            }
+        }
+
+        case Action.PAST_CLINIC: {
+            return {
+                ...state,
+                pastClinic: payload,
             }
         }
         
