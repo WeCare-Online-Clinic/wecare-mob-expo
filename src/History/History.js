@@ -6,6 +6,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import Constants from '../../utils/Constants';
 import axios from 'axios';
 import zIndex from '@material-ui/core/styles/zIndex';
+import {USER_LOGIN_URL, setNextClinic} from '../../redux/actions/loginAction'
 
 const Separator = () => (
     <View style={[styles.separator, {marginVertical: 0}]} />
@@ -33,12 +34,13 @@ async function get_clinic_data(userId) {
 
 const History = ({navigation}) => {
 
-    const arrow = 'chevron-right';
+    const arrow = 'chevron-right'
+    const dispatch = useDispatch()
 
     const user = useSelector((state) => state);
     const userData = user.login.user[0]
-    // const userId = userData.id
-    const userId = 200004
+    const userId = userData.id
+    // const userId = 200004
 
     const [clinicData, setClinicData] = useState([])
     const [data, setData] = useState()
@@ -57,8 +59,9 @@ const History = ({navigation}) => {
     // console.log("historyyyyyyyyy data", clinicData)
     
 
-    const viewClinic = (roww) => {
-        navigation.navigate('ViewClinic', roww);
+    const viewClinic = () => {
+        navigation.navigate('ViewClinic')
+        
     }
 
     return (
@@ -89,7 +92,7 @@ const History = ({navigation}) => {
                                             <Text style={styles.p18}>{row.doctor.clinic.name}</Text>
                                         </View>
                                         <View style={{flex: 1, justifyContent: 'center'}}>
-                                          <FontAwesome5  name={arrow} size={30} color={'#1B3E72'} onPress={() => navigation.navigate('ViewClinic', row)}/>
+                                          <FontAwesome5  name={arrow} size={20} color={'#1B3E72'} onPress={() => {dispatch(setNextClinic(row)), navigation.navigate('ViewClinic')}} />
                                           {/* <Button onPress={viewClinic} >view</Button> */}
                                         </View>
                                         <Separator/>

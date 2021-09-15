@@ -3,7 +3,7 @@ import * as Action from '../actions/loginAction'
 const initState = {
     isLogin: false,
     user: [],
-    nextClinic: [],
+    nextClinic:{},
 }
 
 const userProfile = (state = initState, {type, payload}) => {

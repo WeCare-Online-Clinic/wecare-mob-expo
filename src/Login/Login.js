@@ -64,20 +64,20 @@ const Login = ({ navigation }) =>  {
             console.log(error)
         })
 
-        const userId = 200004
+        // const userId = 200004
 
-        const nextClinicData = axios.get(Constants.API_BASE_URL + '/getNextClinicDetails/' + userId) 
+        // const nextClinicData = axios.get(Constants.API_BASE_URL + '/getNextClinicDetails/' + userId) 
 
     
-        nextClinicData
-        .then((result) => {
-            console.log('rNext clinic data', result.data)  
-            dispatch(setNextClinic(result.data))  
+        // nextClinicData
+        // .then((result) => {
+        //     console.log('rNext clinic data', result.data)  
+        //     dispatch(setNextClinic(result.data))  
     
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        // })
           
        
        
