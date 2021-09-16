@@ -4,7 +4,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { styles } from '../../../styles/global';
 import RequestButton from '../../../components/Button';
 import {useSelector, useDispatch} from 'react-redux';
-import ActionButton from '../../../components/Button'; 
+import ActionButton from '../../../components/Button';
+import DialogInput from 'react-native-dialog-input'; 
 
 
 export default function Profile({navigation}){
@@ -14,6 +15,10 @@ export default function Profile({navigation}){
     const clinicData =  useSelector((state) => state.login.nextClinic)
 
     console.log("Cliniccccccc ",  clinicData)
+
+    const viewNext = () => {
+        navigation.push('NextClinic');
+    } 
 
     return (
         <View style={[styles.container, {
@@ -42,7 +47,7 @@ export default function Profile({navigation}){
                                 </View>
                             </View>
                             <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
-                                <ActionButton text='Request to Change >>' />
+                                <ActionButton text='Request to Change >>'/>
                             </View>                            
                         </View>
                     ))}

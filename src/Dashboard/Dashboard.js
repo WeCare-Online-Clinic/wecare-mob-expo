@@ -9,6 +9,7 @@ import axios from 'axios';
 import { setNextClinic } from '../../redux/actions/loginAction'
 import NextClinicCard from './../../components/NextClinicDataCard'
 import {USER_LOGIN_URL, setPastClinic} from '../../redux/actions/loginAction'
+import PatientStaticChart from '../../components/Charts'
 
 const Separator = () => (
     <View style={styles.separator} />
@@ -131,20 +132,16 @@ const Dashboard = ({navigation}) => {
                                 <ActionButton text='View >>' onPress={() => {dispatch(setNextClinic(clinicData)), navigation.navigate('ViewNextClinic')}}/>
                             </View>
                         </View>
-
-                            {/* <View style={[styles.card, {padding: 10}]}>
-                                <Text style={{alignSelf: 'center'}}>FBC</Text>
-                                <Image style={{width: 300, height: 150, alignSelf: 'center', marginVertical: 20}}
-                                    source={require('./graph.png')}
-                                />
+                          
+                            <View style={[styles.card, {padding: 10}]}>
+                                <PatientStaticChart/>
                             </View>
 
                             <View style={[styles.card, {padding: 10}]}>
-                                <Text style={{alignSelf: 'center'}}>FBC</Text>
-                                <Image style={{width: 300, height: 150, alignSelf: 'center', marginVertical: 20}}
-                                    source={require('./graph.png')}
-                                />
-                            </View> */}
+                                <PatientStaticChart/>
+                            </View>
+
+                            
 
                             <View style={[styles.card, {flex: 2,}]}>
                                 <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
