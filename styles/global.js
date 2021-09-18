@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
   titleText: {
@@ -31,6 +33,7 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 15,
     borderRadius: 10,
+    height: 50,
   },
   scrollContainer: {
     flex: 1,
@@ -113,6 +116,35 @@ export const styles = StyleSheet.create({
     height: 400,
     borderRadius: 5,
     justifyContent: 'center',
+  },
+  modalView: {
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    elevation: 5,
+    transform: [{ translateX: -(width * 0.4) }, 
+                { translateY: -90 }],
+    // height: 280,
+    width: width * 0.8,
+    backgroundColor: "#fff",
+    borderRadius: 7,
+  },
+  viewWrapper: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
+  },
+  textInput: {
+    width: "80%",
+    borderRadius: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderColor: "rgba(0, 0, 0, 0.2)",
+    borderWidth: 1,
+    marginBottom: 8,
   },
 });
 

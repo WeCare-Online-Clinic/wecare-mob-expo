@@ -133,11 +133,11 @@ const Dashboard = ({navigation}) => {
                             </View>
                         </View>
                           
-                            <View style={[styles.card, {padding: 10}]}>
+                            <View style={[styles.card, {justifyContent: 'center', alignItems: 'center'}]}>
                                 <PatientStaticChart/>
                             </View>
 
-                            <View style={[styles.card, {padding: 10}]}>
+                            <View style={[styles.card, {justifyContent: 'center', alignItems: 'center'}]}>
                                 <PatientStaticChart/>
                             </View>
 

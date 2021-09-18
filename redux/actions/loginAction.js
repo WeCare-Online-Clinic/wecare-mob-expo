@@ -4,6 +4,10 @@ import Constants from '../../utils/Constants';
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 
+export const ON_GET_NEXT_CLINIC_DETAILS = 'ON_GET_NEXT_CLINIC_DETAILS';
+export const ON_GET_REQUEST_DATES = 'ON_GET_REQUEST_DATES';
+
+
 export const NEXT_CLINIC = 'NEXT_CLINIC'
 
 export const PAST_CLINIC = 'PAST_CLINIC'
@@ -34,6 +38,7 @@ export const setPastClinic = (clinicdata) => {
         payload: clinicdata,
     }
 }
+
 
 
 

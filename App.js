@@ -18,6 +18,9 @@ import Navigator from './routes/loginStack';
 import HistoryStack from './routes/historyStack';
 import DashStack from './routes/dashboardStack';
 
+import Drawer from './routes/drawer';
+
+
 // import DashboardStack from './routes/dashboardStack';
 // import HistoryStack from './routes/historyStack';
 // import ReportStack from './routes/reportsStack';
@@ -28,18 +31,11 @@ import DashStack from './routes/dashboardStack';
 
 export class App extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     loaded: false,
-  //   }
-  // }
 
-  // componentDidMount(){
-
-  // }
 
   render() {
+
+    
     
     return (
       
@@ -48,7 +44,8 @@ export class App extends Component {
       <Provider store={store}> 
         {/* <Login/> */}
         {/* <HistoryStack/>  */}
-        <DashStack/>
+        {/* <DashStack/> */}
+        <Drawer/>
         {/* <Navigator/> */}
       </Provider>
     );

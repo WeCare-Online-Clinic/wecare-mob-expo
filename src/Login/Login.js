@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {logIn, USER_LOGIN_URL, setNextClinic} from '../../redux/actions/loginAction'
 import Constants from '../../utils/Constants';
 import axios from 'axios';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 // import { auto } from 'async';
 
 
@@ -13,6 +14,7 @@ const Login = ({ navigation }) =>  {
     
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false)
     
     const dispatch = useDispatch()    
      
@@ -51,7 +53,7 @@ const Login = ({ navigation }) =>  {
                 console.log('bad user')
                 Alert.alert(
                     "Invalid Login",
-                    "My Alert Msg",
+                    "Not a patient log in atempt",
                     [
                       
                       { text: "OK", onPress: () => console.log("OK Pressed") }
@@ -61,37 +63,29 @@ const Login = ({ navigation }) =>  {
             }
         })
         .catch((error) => {
-            console.log(error)
+            console.log("eeeee" , error)
+            if(error == "[Error: Network Error]"){
+                Alert.alert(
+                    "Invalid Login",
+                    error,
+                    [
+                      
+                      { text: "OK", onPress: () => console.log("OK Pressed") }
+                    ]
+                );
+            }
+            else{
+            Alert.alert(
+                "Invalid Login",
+                "User name or password is invalid. Please check your username and password and try again",
+                [
+                  
+                  { text: "OK", onPress: () => console.log("OK Pressed") }
+                ]
+            );}
         })
 
-        // const userId = 200004
-
-        // const nextClinicData = axios.get(Constants.API_BASE_URL + '/getNextClinicDetails/' + userId) 
-
-    
-        // nextClinicData
-        // .then((result) => {
-        //     console.log('rNext clinic data', result.data)  
-        //     dispatch(setNextClinic(result.data))  
-    
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        // })
-          
        
-       
-        // e.preventDefault()
-        // const isValid = validation()
-
-        // if (isValid) {
-        //     let data = { userName, password}
-        //     // let data ={email:'admin@gmail.com', password: 'ndansdasd'};
-        //     // dispatch(Action.submitLogin(data))
-        //     console.log('pass')
-        // } else {
-        //     console.log('fail')
-        // }
   
     }
 
@@ -152,13 +146,24 @@ const Login = ({ navigation }) =>  {
                                 onChangeText={text => setUserName(text)}
                                 defaultValue={userName}
                             />
-                            <TextInput
-                                style={globalStyles.input}
-                                placeholder='Password'
-                                // secureTextEntry= {true}
-                                onChangeText={text => setPassword(text)}
-                                defaultValue={password}
-                            />
+                            <View style={styles.row}>
+                                <TextInput
+                                    style={[globalStyles.input, {flex: 10, borderTopRightRadius: 0, borderBottomRightRadius: 0,}]}
+                                    placeholder='Password'
+                                    secureTextEntry= {!showPassword}
+                                    onChangeText={text => setPassword(text)}
+                                    defaultValue={password}                                    
+                                />
+                               {showPassword ?  
+                                <FontAwesome5 style={styles.showPassword} name='eye' size={30} color={'#1B3E72'} onPress={() => setShowPassword((showPassword) => !showPassword)}/> :
+                                <FontAwesome5 style={styles.showPassword} name='eye-slash' size={30} color={'#1B3E72'} onPress={() => setShowPassword((showPassword) => !showPassword)}/>  
+                                
+                                }
+                                
+                                
+                
+                            </View>
+
                             <Pressable style={styles.button} onPress={onLogin}>
                                 <Text style={styles.buttonText}>Log In</Text>
                             </Pressable>
@@ -184,6 +189,24 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
         textAlign: 'center',
+    },
+    row: {
+        flexDirection: 'row',
+        marginVertical: 15,
+
+        // backgroundColor: 'gray',
+    },
+    showPassword: {
+        flex: 2, 
+        paddingVertical: 10,
+        paddingLeft: 10, 
+        backgroundColor: '#fff', 
+        height: 50, 
+        marginTop: 10, 
+        borderTopRightRadius: 10, 
+        borderBottomRightRadius: 10,
+        borderColor: '#ddd',
+        
     }
 })
 
