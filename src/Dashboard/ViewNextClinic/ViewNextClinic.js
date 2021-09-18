@@ -60,21 +60,21 @@ export default function Profile({navigation}){
     const [request, setRequest] = useState("");
     const [requestDateList, setRequestDateList] = useState([])
 
-    const RequestToChange = (row) => {
+    // const RequestToChange = (row) => {
         
-        let reqestDateObject = Object.assign({}, {
-            clinicId: row && row.nurse.clinic.id,
-            currentClinicDate: row && row.date
-        })
+    //     let reqestDateObject = Object.assign({}, {
+    //         clinicId: row && row.nurse.clinic.id,
+    //         currentClinicDate: row && row.date
+    //     })
 
-        console.log('wewewewewewew', reqestDateObject)
-        get_Request_Dates(reqestDateObject).then((res) => {
-            setRequestDateList(res)
-            console.log("wwwwwwwwwwww" , res)
-          })
+    //     // console.log('wewewewewewew', reqestDateObject)
+    //     get_Request_Dates(reqestDateObject).then((res) => {
+    //         setRequestDateList(res)
+            
+    //       })
 
-        console.log("req data" ,requestDateList)
-    } 
+        
+    // } 
 
     const [requestSent , setRequstSent] = useState(null)
     const sendRequest = (row) =>{
@@ -160,13 +160,26 @@ export default function Profile({navigation}){
                                 </View>
                             </View>
                             <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
-                                <ActionButton text='Request to Change >>' onPress={() => { RequestToChange(row.clinicDate && row.clinicDate), setModalVisible(!isModalVisible)}}/>
+                                <ActionButton text='Request to Change >>' onPress={() => { 
+                                  
+                                  let reqestDateObject = Object.assign({}, {
+                                    clinicId: row && row.clinicDate.nurse.clinic.id,
+                                    currentClinicDate: row && row.clinicDate.date
+                                  })
+                        
+                                  // console.log('wewewewewewew', reqestDateObject)
+                                  get_Request_Dates(reqestDateObject).then((res) => {
+                                      setRequestDateList(res)
+                                      
+                                    })
+                                  
+                                   setModalVisible(!isModalVisible)}}/>
                                 
                             </View>
                             <Modal animationType="slide" 
                                 transparent visible={isModalVisible} 
                                 presentationStyle="overFullScreen" 
-                                onDismiss={RequestToChange}>
+                                onDismiss={()=> {setModalVisible(!isModalVisible)}}>
                                 <View style={styles.viewWrapper}>
                                     <View style={styles.modalView}>
                                         <View style={[styles.row ,{paddingVertical: 10}]}>

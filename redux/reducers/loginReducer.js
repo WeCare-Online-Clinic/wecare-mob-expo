@@ -4,7 +4,8 @@ const initState = {
     isLogin: false,
     user: [],
     nextClinic: [],
-    pastClinic: {}
+    pastClinic: {},
+    report: {},
 }
 
 const userProfile = (state = initState, {type, payload}) => {
@@ -29,6 +30,13 @@ const userProfile = (state = initState, {type, payload}) => {
             return {
                 ...state,
                 pastClinic: payload,
+            }
+        }
+
+        case Action.REPORT: {
+            return {
+                ...state,
+                report: payload,
             }
         }
         
