@@ -55,6 +55,25 @@ const Separator = () => (
     }
   }
 
+  async function get_stat_data(userId) {
+
+    let stat_data = []
+  
+    try {
+      await axios
+        .get(Constants.API_BASE_URL + '/getPatientStatistics/'+userId)
+        .then((res) => {
+          if (res.status == 200) {
+            console.log('stattttttt',res)
+            stat_data = res.data
+          }
+        })
+      return stat_data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 const Dashboard = ({navigation}) => {
 
     const dispatch = useDispatch()
@@ -65,20 +84,28 @@ const Dashboard = ({navigation}) => {
     const userId = 200004
 
     useEffect(() => {
+        get_stat_data(userId).then((res) => {
+          setStatData(res)
+          console.log('statttttttttttttt' ,res)
+        })
+      
         get_next_clinic_data(userId).then((res) => {
           setClinicData(res)
           setNextClinicData(res[0])
            console.log(res)
         })
+        
         get_past_clinic_data(userId).then((res) => {
             setPastClinicData(res)
             // console.log(res)
           })
+          
       }, [])
 
     const [clinicData, setClinicData] = useState([])
     const [nextClinicData, setNextClinicData] = useState([])
     const [pastClinicData, setPastClinicData] = useState([])
+    const [statData, setStatData] = useState([])
     
     // const dataaaa = nextClinicData.clinicDate
     
@@ -136,12 +163,16 @@ const Dashboard = ({navigation}) => {
                         </View>
                           
                             <View style={[styles.card, {justifyContent: 'center', alignItems: 'center'}]}>
-                                <PatientStaticChart/>
+                                {statData && statData 
+                                  .map((stat, index) => (
+                                    <View key={index}>
+                                      <PatientStaticChart stat={stat}/>
+                                    </View>
+                                  ))
+                                }
                             </View>
 
-                            <View style={[styles.card, {justifyContent: 'center', alignItems: 'center'}]}>
-                                <PatientStaticChart/>
-                            </View>
+                            
 
                             
 

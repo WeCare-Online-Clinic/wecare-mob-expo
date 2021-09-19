@@ -3,6 +3,7 @@ import { LineChart } from 'react-native-chart-kit'
 import { useSelector } from 'react-redux'
 import { StyleSheet, View, Dimensions } from 'react-native';
 import {styles} from '../styles/global'
+import { style } from 'dom-helpers';
 
 const useStyles = StyleSheet.create({
   headerTitle: {
@@ -15,36 +16,45 @@ const useStyles = StyleSheet.create({
 
 
 
-const PatientStaticChart = () => {
-  // const reducerData = useSelector(
-  //   ({ patientInClinic }) => patientInClinic.doctorDashboard
-  // )
-  // if (!reducerData) {
-  //   window.location.reload()
-  // }
-  // const monthlyRegisteredUsers = reducerData.patientCountInClinic
-//   const materializeUIClasses = useStyles()
-const windowWidth = Dimensions.get('window').width;
+const PatientStaticChart = ({stat}) => {
+
+
+  let statLabels=[];
+  let data1=[];
+  let data2=[];
+
+  let dataLength=stat.dataList && stat.dataList.length;
+  for(var i=0; i<dataLength; i++){
+    statLabels[i] = stat.dataList[i].date.split("21-").pop();    
+  }
+  for(var j=0; j<dataLength; j++){
+    data1[j]=stat.dataList[j].data1;   
+  }  
+  for(var z=0; z<dataLength; z++){
+    data2[z]=stat.dataList[z].data2;
+  } 
+
+  console.log('TATATATATATAAA',statLabels)
+
+  const windowWidth = Dimensions.get('window').width;
+  
   const state = {
-    labels: [
-      'Jan | ',
-      'Feb | ',
-      'Mar | ',
-      'Apr | ',
-      'May | ',
-      'Jun | ',
-      'Jul | ',
-      'Aug | ',
-      'Sep | ',
-      'Oct | ',
-      'Nov | ',
-      'Dec',
-    ],
+    labels: statLabels,
+    
     datasets: [
       
-       { data: [2,5,7,3,8,9,4,5,7,3,5,6]
+       { 
+         data: data1,
+         color: (opacity = 1) => `rgba(255, 51, 108 , ${opacity})`, 
+         strokeWidth: 3 
+
+      },
+      { data: data2,
+        color: (opacity = 1) => `rgba(41, 251, 157  , ${opacity})`, 
+        strokeWidth: 2 
       }
     ],
+    legend: [`${stat.field1}`, `${stat.field2}`],
   }
   {
     return (
@@ -79,7 +89,7 @@ const windowWidth = Dimensions.get('window').width;
                 backgroundGradientFrom: "#f2f2f2",
                 backgroundGradientTo: "#f2f2f2",
                 decimalPlaces: 2, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgba(75,192,192,0.5)`,
+                color: (opacity = 1) => `rgba(27, 62,114,0.3)`,
                 labelColor: (opacity = 1) => `#1B3E72`,
                 style: {
                     borderRadius: 16

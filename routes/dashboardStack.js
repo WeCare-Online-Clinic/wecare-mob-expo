@@ -12,7 +12,7 @@ const screens = {
         screen: Dashboard,
         navigationOptions: ({ navigation }) =>{
             return {
-                headerTitle: () => <Header navigation={navigation} title='Dash Board'/>,            
+                headerTitle: () => <Header navigation={navigation} title='Dashboard'/>,            
             }
         }
     },
