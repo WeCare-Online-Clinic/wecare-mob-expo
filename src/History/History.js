@@ -7,6 +7,7 @@ import Constants from '../../utils/Constants';
 import axios from 'axios';
 import zIndex from '@material-ui/core/styles/zIndex';
 import {USER_LOGIN_URL, setPastClinic} from '../../redux/actions/loginAction'
+import Header from '../../components/Header'
 
 const Separator = () => (
     <View style={[styles.separator, {marginVertical: 0}]} />
@@ -65,8 +66,11 @@ const History = ({navigation}) => {
     }
 
     return (
+        
+        
         <View style={[styles.container, {flexDirection: "column"}]}>
-            <View style={{padding: 10}}> 
+            <Header/>
+            <View style={{padding: 20}}> 
                 <Text style={styles.title}>History</Text>
             </View>
             <View style={[styles.row, {margin: 40, marginBottom: 0, marginTop: 40}]}>

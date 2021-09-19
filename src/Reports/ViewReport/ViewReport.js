@@ -4,6 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { styles } from '../../../styles/global';
 import RequestButton from '../../../components/Button';
 import {useSelector, useDispatch} from 'react-redux';
+import Header from '../../../components/Header'
 // import { base64Decode } from 'base64topdf';
 
 import base64 from 'react-native-base64'
@@ -32,6 +33,7 @@ const ViewReport = () =>{
           }]}>
 
             <SafeAreaView style={styles.scrollContainer}>
+                <Header/>
                 <ScrollView style={styles.scrollView}>
                     <View style={{padding: 10}}>
                         <View style={[styles.mainCard, {flexDirection: 'row'}]}>

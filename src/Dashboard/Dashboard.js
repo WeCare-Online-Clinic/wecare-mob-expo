@@ -10,6 +10,7 @@ import { setNextClinic } from '../../redux/actions/loginAction'
 import NextClinicCard from './../../components/NextClinicDataCard'
 import {USER_LOGIN_URL, setPastClinic} from '../../redux/actions/loginAction'
 import PatientStaticChart from '../../components/Charts'
+import Header from '../../components/Header'
 
 const Separator = () => (
     <View style={styles.separator} />
@@ -106,6 +107,7 @@ const Dashboard = ({navigation}) => {
           }]}>
                           
             <SafeAreaView style={styles.scrollContainer}>
+                <Header/>
                 <ScrollView style={styles.scrollView}>
                     <View style={{padding: 10 }}>
                         <View style={styles.mainCard}>

@@ -4,6 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { styles } from '../../../styles/global';
 import RequestButton from '../../../components/Button';
 import {useSelector, useDispatch} from 'react-redux';
+import Header from '../../../components/Header'
 
 
 export default function Profile({navigation}){
@@ -20,6 +21,7 @@ export default function Profile({navigation}){
           }]}>
             
             <SafeAreaView style={styles.scrollContainer}>
+                <Header/>
                 <ScrollView style={styles.scrollView}>
                     <View style={{padding: 10}}>
                         <View style={[styles.mainCard, {flexDirection: 'row'}]}>

@@ -7,6 +7,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import ActionButton from '../../../components/Button';
 import axios from 'axios';
 import Constants from '../../../utils/Constants';
+import Header from '../../../components/Header'
 
 async function get_Request_Dates(requestDateObject) {
 
@@ -139,6 +140,7 @@ export default function Profile({navigation}){
           }]}>
             
             <SafeAreaView style={styles.scrollContainer}>
+              <Header/>
                 <ScrollView style={styles.scrollView}>
                     {clinicData.map((row, index) => (
                         <View key={index} style={[styles.card, {flex: 2,}]}>

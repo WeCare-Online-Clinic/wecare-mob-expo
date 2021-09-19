@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import Constants from '../../utils/Constants';
 import { setUser } from '../../redux/actions/profleAction'
+import Header from '../../components/Header'
 
 // import ActionButton from '../../components/Button';
 
@@ -35,6 +36,7 @@ const Profile = ({ navigation }) => {
               {/* <View style={[styles.pBold, {padding: 10}]}>{new Date().getFullYear()}/ {new Date().getDate()}/ {new Date().getMonth() + 1} </View> */}
             
             <SafeAreaView style={styles.scrollContainer}>
+                <Header/>
                 <ScrollView style={styles.scrollView}>
                     <View style={{padding: 10}}>
                         <View style={styles.mainCard}>

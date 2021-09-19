@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TextInput, SafeAreaView, ScrollView, StatusBar,
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { styles } from '../../../styles/global';
 import RequestButton from '../../../components/Button';
+import Header from '../../../components/Header'
 
 
 export default function EditProfile(){
@@ -17,6 +18,7 @@ export default function EditProfile(){
           }]}>
             
             <SafeAreaView style={styles.scrollContainer}>
+                <Header/>
                 <ScrollView style={styles.scrollView}>
                     <View style={{padding: 10}}>
                         <View style={[styles.mainCard, {flexDirection: 'row'}]}>
