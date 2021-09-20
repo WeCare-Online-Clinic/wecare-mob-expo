@@ -1,7 +1,7 @@
 import React from 'react'
 import { LineChart } from 'react-native-chart-kit'
 import { useSelector } from 'react-redux'
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions, Text } from 'react-native';
 import {styles} from '../styles/global'
 import { style } from 'dom-helpers';
 
@@ -60,13 +60,15 @@ const PatientStaticChart = ({stat}) => {
     return (
       <View style={[ {borderRadius: 10, }]}>
         <View
-          style={{ backgroundColor: '#3f51b5', textAlign: 'center' }}
-        ></View>
+          style={[styles.cardTitle , {marginHorizontal:0}]}
+        >
+          <Text style={[styles.H1, {height: 30, flexDirection: "row", margin: 0}]}>{stat.testName && stat.testName}</Text>
+        </View>
         <View>
           
             <LineChart
                 data={state}
-                width={windowWidth-windowWidth*0.2} // from react-native
+                width={windowWidth-windowWidth*0.15} // from react-native
                 height={220}
                 // yAxisLabel="$"
                 // yAxisSuffix="k"

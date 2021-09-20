@@ -80,8 +80,8 @@ const Dashboard = ({navigation}) => {
 
     const user = useSelector((state) => state);
     const userData = user.login.user[0]
-    // const userId = userData.id
-    const userId = 200004
+    const userId = userData.id
+    // const userId = 200055
 
     useEffect(() => {
         get_stat_data(userId).then((res) => {
@@ -92,12 +92,12 @@ const Dashboard = ({navigation}) => {
         get_next_clinic_data(userId).then((res) => {
           setClinicData(res)
           setNextClinicData(res[0])
-           console.log(res)
+           console.log('nexxxxxxxxxxxxxxx', res)
         })
         
         get_past_clinic_data(userId).then((res) => {
             setPastClinicData(res)
-            // console.log(res)
+            console.log(res)
           })
           
       }, [])
@@ -111,6 +111,7 @@ const Dashboard = ({navigation}) => {
     
     // const [data, setData] = useState()
     console.log('pasttts ' , pastClinicData[0])
+    console.log('neeasttts ' , clinicData)
   
     // const renderData = (data) => {
     //   setData(data)
@@ -143,7 +144,7 @@ const Dashboard = ({navigation}) => {
                             <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
                                 <Text style={styles.H1}>Next Cilic  - </Text>
                                 {/* <Text>{ navigation.getParam() }</Text> */}
-                                <View style={styles.txtLeft}><Text style={styles.H1}>{nextClinicData.id && nextClinicData.clinicDate.nurse.clinic.name}</Text></View>
+                                <View style={styles.txtLeft}><Text style={styles.H1}>{nextClinicData.clinic && nextClinicData.clinic.name}</Text></View>
                             </View>
                             <View style={[{flex: 8, flexDirection: "row" }]}>
                                 <View style={[styles.cardI, {flex: 2,}]}>
@@ -152,9 +153,9 @@ const Dashboard = ({navigation}) => {
                                     <Text style={styles.p}>Queue No</Text>
                                 </View>
                                 <View style={[styles.cardI, {flex: 4,}]}>
-                                    <Text style={styles.p}>- {nextClinicData.id && nextClinicData.clinicDate.date}</Text>
-                                    <Text style={styles.p}>- {nextClinicData.id && nextClinicData.time}</Text>
-                                    <Text style={styles.p}>- {nextClinicData.id && nextClinicData.queueNo}</Text>
+                                    <Text style={styles.p}>- {nextClinicData.clinic && nextClinicData.clinicAppointment.clinicDate.date}</Text>
+                                    <Text style={styles.p}>- {nextClinicData.clinic && nextClinicData.clinicAppointment.time}</Text>
+                                    <Text style={styles.p}>- {nextClinicData.clinic && nextClinicData.clinicAppointment.queueNo}</Text>
                                 </View>
                             </View>
                             <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
@@ -162,15 +163,17 @@ const Dashboard = ({navigation}) => {
                             </View>
                         </View>
                           
-                            <View style={[styles.card, {justifyContent: 'center', alignItems: 'center'}]}>
+                            
                                 {statData && statData 
                                   .map((stat, index) => (
-                                    <View key={index}>
+                                    <View key={index} style={[styles.card, {justifyContent: 'center', alignItems: 'center'}]}>
+                                    
                                       <PatientStaticChart stat={stat}/>
                                     </View>
+
                                   ))
                                 }
-                            </View>
+                            
 
                             
 

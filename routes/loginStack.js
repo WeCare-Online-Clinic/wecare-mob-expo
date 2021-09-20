@@ -4,7 +4,9 @@ import { styles } from '../styles/global';
 import React from 'react';
 import LogIn from '../src/Login/Login'
 import Drawer from './drawer'
-import Button from '../components/Button';
+import { Button } from 'react-native';
+// import Button from '../components/Button';
+import DdashboardStack from './dashboardStack';
 
 const Left = null
 
@@ -24,17 +26,17 @@ const LogInStack = createStackNavigator(screens, {
         //default option for all screens
         headerTintColor: '#1B3E72',
         headerShown: false,
-        // headerBackAccessibilityLabel: null,
+        headerBackAccessibilityLabel: null,
         // headerLeft: <Button
         //     onPress={() => alert('This is a button!')}
         //     title="Info"
-        //     color="#fff"
+        //     color="#f89"
         // />,
         
         
     }   
 });
 
-export default createAppContainer(LogInStack);
+ export default createAppContainer(LogInStack);
 
 

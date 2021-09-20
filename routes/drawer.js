@@ -4,6 +4,7 @@ import DashboardStack from './dashboardStack'
 import HistoryStack from './historyStack'
 import ReportStack from './reportsStack'
 import ProfileStack from './profileStack'
+// import LoginStack from './loginStack'
 import SideBar from './sideBar'
 import React from 'react'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -29,6 +30,9 @@ const screens = {
     Reports: {
         screen: ReportStack,
     },
+    // Signout: {
+    //     screen: LoginStack
+    // },
     
 
 }
@@ -48,6 +52,7 @@ const RootDrawerNavigator = createDrawerNavigator(
                 title: "Profile",
                 drawerIcon: () => <FontAwesome5 name='user' size={20} color={'#1B3E72'} />
             }
+            
         },
         HistoryStack: {
             screen: HistoryStack,
@@ -63,6 +68,7 @@ const RootDrawerNavigator = createDrawerNavigator(
                 drawerIcon: () => <FontAwesome5 name='file-medical-alt' size={20} color={'#1B3E72'} />
             }
         },
+        
     }, 
     {
     contentComponent: props => <SideBar {...props}/> 

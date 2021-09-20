@@ -80,9 +80,9 @@ export default function Profile({navigation}){
     const [requestSent , setRequstSent] = useState(null)
     const sendRequest = (row) =>{
         let requestObject = Object.assign({}, {
-            clinic: row.clinicDate.nurse.clinic,
-            patient: row.patient,
-            clinicDate: row.clinicDate
+            clinic: row.clinic,
+            patient: row.clinicAppointment.patient,
+            clinicDate: row.clinicAppointment.clinicDate
         })
         send_Request(requestObject).then((res) => {
             
@@ -147,7 +147,7 @@ export default function Profile({navigation}){
                             <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
                                 <Text style={styles.H1}>Next Cilnic  - </Text>
                                 {/* <Text>{ navigation.getParam() }</Text> */}
-                                <View style={styles.txtLeft}><Text style={styles.H1}>{row.id && row.clinicDate.nurse.clinic.name}</Text></View>
+                                <View style={styles.txtLeft}><Text style={styles.H1}>{row.clinic && row.clinic.name}</Text></View>
                             </View>
                             <View style={[{flex: 8, flexDirection: "row" }]}>
                                 <View style={[styles.cardI, {flex: 2,}]}>
@@ -156,17 +156,17 @@ export default function Profile({navigation}){
                                     <Text style={styles.p}>Queue No</Text>
                                 </View>
                                 <View style={[styles.cardI, {flex: 4,}]}>
-                                    <Text style={styles.p}>- {row.id && row.clinicDate.date }</Text>
-                                    <Text style={styles.p}>- {row.id && row.time }</Text>
-                                    <Text style={styles.p}>- {row.id && row.queueNo}</Text>
+                                    <Text style={styles.p}>- {row.clinic && row.clinicAppointment.clinicDate.date }</Text>
+                                    <Text style={styles.p}>- {row.clinic && row.clinicAppointment.time }</Text>
+                                    <Text style={styles.p}>- {row.clinic && row.clinicAppointment.queueNo}</Text>
                                 </View>
                             </View>
                             <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
                                 <ActionButton text='Request to Change >>' onPress={() => { 
                                   
                                   let reqestDateObject = Object.assign({}, {
-                                    clinicId: row && row.clinicDate.nurse.clinic.id,
-                                    currentClinicDate: row && row.clinicDate.date
+                                    clinicId: row && row.clinic.id,
+                                    currentClinicDate: row && row.clinicAppointment.clinicDate.date
                                   })
                         
                                   // console.log('wewewewewewew', reqestDateObject)

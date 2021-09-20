@@ -40,8 +40,8 @@ const History = ({navigation}) => {
 
     const user = useSelector((state) => state);
     const userData = user.login.user[0]
-    // const userId = userData.id
-    const userId = 200004
+    const userId = userData.id
+    // const userId = 200004
 
     const [reportsData, setrepoRtsData] = useState([])
     const [data, setData] = useState()
@@ -68,10 +68,10 @@ const History = ({navigation}) => {
     return (
         <View style={[styles.container, {flexDirection: "column"}]}>
             <Header/>
-            <View style={{padding: 10}}> 
+            <View style={{paddingHorizontal: 20, marginVertical: 20}}> 
                 <Text style={styles.title}>Reports</Text>
             </View>
-            <View style={[styles.row, {margin: 40, marginBottom: 0, marginTop: 40}]}>
+            <View style={[styles.row, {margin: 30, marginBottom: 0, marginTop: 20}]}>
                 <View style={{flex: 6}}>
                     <Text style={styles.p}>Date</Text>
                 </View>

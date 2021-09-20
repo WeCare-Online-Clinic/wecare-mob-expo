@@ -31,7 +31,9 @@ import Drawer from './routes/drawer';
 
 export class App extends Component {
 
-
+  islogin () {
+    const user = useSelector((state) => state.login.isLogin)
+  }
 
   render() {
 
@@ -39,14 +41,15 @@ export class App extends Component {
     
     return (
       
-        
+      
       // <Navigator/>
       <Provider store={store}> 
         {/* <Login/> */}
         {/* <HistoryStack/>  */}
         {/* <DashStack/> */}
-        <Drawer/>
-        {/* <Navigator/> */}
+        {/* <Drawer/> */}
+        
+        <Navigator/>
       </Provider>
     );
 

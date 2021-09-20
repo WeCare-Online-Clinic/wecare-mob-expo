@@ -41,7 +41,7 @@ const Login = ({ navigation }) =>  {
                 userData
                     .then((result) => {
                         dispatch(logIn(result.data))
-                        navigation.navigate('Drawer')
+                        navigation.navigate('DashboardStack')
                     })
                     .catch((err) => {
                         console.log('err', err)

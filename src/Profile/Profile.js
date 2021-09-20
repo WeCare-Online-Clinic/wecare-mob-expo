@@ -54,9 +54,9 @@ const Profile = ({ navigation }) => {
                                     <View style={{flex: 8}}>
                                         <Text style={[styles.title, {alignSelf: 'center'}]}>{userData.name}</Text>
                                     </View>
-                                    <View style={{flex: 1, justifyContent: 'center'}}>
+                                    {/* <View style={{flex: 1, justifyContent: 'center'}}>
                                         <FontAwesome5  name={arrow} size={25} color={'#1B3E72'} onPress={editField}/>
-                                    </View>
+                                    </View> */}
                                 </View>
                             </View>
                             <View style={styles.whitecard}>
@@ -65,18 +65,18 @@ const Profile = ({ navigation }) => {
                                         <Text style={styles.p}>Address</Text>
                                         <Text style={styles.pBold}>{userData.address}</Text>
                                     </View>
-                                    <View style={{flex: 1, justifyContent: 'center'}}>
+                                    {/* <View style={{flex: 1, justifyContent: 'center'}}>
                                         <FontAwesome5  name={arrow} size={25} color={'#1B3E72'} onPress={editField}/>
-                                    </View>
+                                    </View> */}
                                 </View>
                                 <View style={styles.row}>
                                     <View style={{flex: 11}}>
                                         <Text style={styles.p}>Phone</Text>
                                         <Text style={styles.pBold}>{userData.contact}</Text>
                                     </View>
-                                    <View style={{flex: 1, justifyContent: 'center'}}>
+                                    {/* <View style={{flex: 1, justifyContent: 'center'}}>
                                         <FontAwesome5  name={arrow} size={25} color={'#1B3E72'} onPress={editField}/>
-                                    </View>
+                                    </View> */}
                                 </View>
                                 <View style={styles.row}>
                                     <View style={{flex: 11}}>
@@ -110,7 +110,7 @@ const Profile = ({ navigation }) => {
                                 </View>
                                 <View style={styles.row}>
                                     <View style={{flex: 11}}>
-                                        <Text style={styles.p}>Clinic ID</Text>
+                                        <Text style={styles.p}>Registered Date</Text>
                                         <Text style={styles.pBold}>{userData.id}</Text>
                                     </View>
                                 </View>

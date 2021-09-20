@@ -83,7 +83,7 @@ const ViewReport = () =>{
                                         </View> 
                                     </View>
                                 </View> 
-                                <ViewPDFComponent reportDetails={reportData.pdfReport}/>                          
+                                {reportData.pdfReport == null ? <Text>N/A</Text> : <ViewPDFComponent reportDetails={reportData.pdfReport}/>}                          
                             </View>
                         </View>
                     </View>

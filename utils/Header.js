@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
        height: '100%', 
        flexDirection: 'row',
        alignItems: 'center',
-       justifyContent: 'center',
+       justifyContent: 'center',      
+       paddingRight: 50
     },
     headerText: {
         fontWeight: 'bold',

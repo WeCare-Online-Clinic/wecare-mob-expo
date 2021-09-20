@@ -11,6 +11,7 @@ const screens = {
     Dashboard: {
         screen: Dashboard,
         navigationOptions: ({ navigation }) =>{
+            
             return {
                 headerTitle: () => <Header navigation={navigation} title='Dashboard'/>,            
             }
@@ -33,6 +34,7 @@ const screens = {
 const DashboardStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
         //default option for all screens
+        
         
         
     }   

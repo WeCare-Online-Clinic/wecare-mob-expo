@@ -7,6 +7,8 @@ import { styles } from '../styles/global';
 import ActionButton from '../components/Button'
 import axios from 'axios'
 import Constants from '../utils/Constants'
+// import Clock from 'react-live-clock'
+import Clock from './Clock'
 
 
 async function get_messages(userId) {
@@ -36,7 +38,7 @@ const Header = () => {
     const user = useSelector((state) => state);
     const userData = user.login.user[0]
     // const userId = userData.id
-    const userId = 200004
+    const userId = 200055
 
     const [currentTime, setCurrentTime] = useState('');
     const [currentDate, setCurrentDate] = useState('');
@@ -79,6 +81,9 @@ const Header = () => {
         )
     }, []);
 
+    
+    
+
     const [isModalVisible, setModalVisible] = useState(false);
     const [isModal2Visible, setModal2Visible] = useState(false);
     const [notiData, setNotidata] = useState(false);
@@ -86,7 +91,7 @@ const Header = () => {
     const NotificationView = () => {
 
         setModalVisible(!isModalVisible)
-       
+        console.log("pressssss", notiData)
 
         
 
@@ -103,14 +108,20 @@ const Header = () => {
       };
 
     return (
-        <View style={styless.row}> 
+        <View style={[styless.row , { paddingHorizontal: 0}]}> 
             <View >
                 <Text style={styless.dateTime}>
                     {currentDate}
                 </Text>
-                <Text style={styless.dateTime, styless.time}>
+                {/* <Text style={styless.dateTime, styless.time}>
                     {currentTime}
                 </Text>
+                <Text>
+                    <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Pacific'} /> 
+                </Text> */}
+                <View style={[styless.time, {marginHorizontal: 15}]}>
+                 <Clock/>
+                </View>
             </View>
             <View style={styless.notiIcon}>               
                 <FontAwesome5  
@@ -126,7 +137,7 @@ const Header = () => {
                 presentationStyle="overFullScreen" 
                 onDismiss={()=> {setModalVisible(!isModalVisible)}}>
                 <View style={styles.viewWrapper}>
-                                    <View style={[styles.modalView , {transform: [{ translateX: -(width * 0.4) }, { translateY: -(height * 0.3) }],}]}>
+                                    <View style={[styles.modalView , {transform: [{ translateX: -(width * 0.4) }, { translateY: -(height * 0.46) }],}]}>
                                         <View style={[styles.row ,{paddingVertical: 10}]}>
                                             <Text style={[styles.H1 ,{color: "#1B3E72"}]}> Notifications</Text>
                                         </View> 
@@ -246,7 +257,7 @@ const styless = StyleSheet.create({
     dateTime: {
         margin: 0,
         marginHorizontal: 21,
-        fontSize: 12,
+        fontSize: 14,
         color: "#1B3E72",
     },
     time: {
@@ -257,6 +268,7 @@ const styless = StyleSheet.create({
     row: {
         flexDirection: 'row',
         marginVertical: 15,
+        marginHorizontal: 4,
         // backgroundColor: 'gray',
     },
     notiIcon: {

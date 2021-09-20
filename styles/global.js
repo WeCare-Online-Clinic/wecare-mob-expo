@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginVertical: 15,
+    marginVertical: 10,
     // backgroundColor: 'gray',
   },
   column: {
@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     // paddingTop: StatusBar.currentHeight,
-    paddingTop: 20,
+    paddingTop: 0,
   },
   scrollView: { 
   },
