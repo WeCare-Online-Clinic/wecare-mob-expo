@@ -42,7 +42,6 @@ const History = ({navigation}) => {
     const userData = user.login.user[0]
     const userId = userData.id
     // const userId = 200004
-
     const [reportsData, setrepoRtsData] = useState([])
     const [data, setData] = useState()
   
@@ -56,9 +55,6 @@ const History = ({navigation}) => {
         // console.log(res)
       })
     }, [])
-
-    console.log("historyyyyyyyyy data", reportsData)
-    
 
     const viewClinic = () => {
         navigation.navigate('ViewClinic')

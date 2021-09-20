@@ -24,6 +24,7 @@ const PatientStaticChart = ({stat}) => {
   let data2=[];
 
   let dataLength=stat.dataList && stat.dataList.length;
+
   for(var i=0; i<dataLength; i++){
     statLabels[i] = stat.dataList[i].date.split("21-").pop();    
   }
@@ -33,9 +34,7 @@ const PatientStaticChart = ({stat}) => {
   for(var z=0; z<dataLength; z++){
     data2[z]=stat.dataList[z].data2;
   } 
-
-  console.log('TATATATATATAAA',statLabels)
-
+  
   const windowWidth = Dimensions.get('window').width;
   
   const state = {

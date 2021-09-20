@@ -20,7 +20,7 @@ const SideBar = (props) => {
                         <Image source={require('../src/Profile/profile.png')} style={localStyles.profile}/>
                     </View>
                     <View style={{flex: 15}}>
-                        <Text style={[styles.H1, {fontSize: 25, marginTop: 10, justifyContent: 'flex-end'}]}>userData.name</Text>
+                        <Text style={[styles.H1, {fontSize: 25, marginTop: 10, justifyContent: 'flex-end'}]}>{userData.name}</Text>
                     </View>
                 </View>
                

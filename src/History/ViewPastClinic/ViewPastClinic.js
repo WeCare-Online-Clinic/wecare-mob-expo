@@ -13,8 +13,6 @@ export default function Profile({navigation}){
 
     const clinicData =  useSelector((state) => state.login.pastClinic)
 
-    console.log("Cliniccccccc ",  clinicData)
-
     return (
         <View style={[styles.container, {
             flexDirection: "column"
@@ -87,11 +85,11 @@ export default function Profile({navigation}){
                                 </View>
                                 <View style={styles.row}>
                                     <View style={{flex: 11}}>
-                                        <Text style={styles.p}>Repots</Text>
-                                        <Text style={styles.pBold}>{clinicData.labTests == null ? 'N/A' : clinicData.labTests}</Text>
+                                        {/* <Text style={styles.p}>Repots</Text>
+                                        <Text style={styles.pBold}>{clinicData.labTests == null ? 'N/A' : clinicData.labTests}</Text> */}
                                     </View>
                                     <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={20} color={'#1B3E72'}/>
+                                        {/* <FontAwesome5  name={arrow} size={20} color={'#1B3E72'}/> */}
                                     </View>
                                 </View>                             
                             </View>

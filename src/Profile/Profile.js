@@ -8,19 +8,10 @@ import Constants from '../../utils/Constants';
 import { setUser } from '../../redux/actions/profleAction'
 import Header from '../../components/Header'
 
-// import ActionButton from '../../components/Button';
-
-
 const Profile = ({ navigation }) => {
-
     
-       
-    const user = useSelector((state) => state)
-    
+    const user = useSelector((state) => state)    
     const userData = user.login.user[0]
-
-    console.log('name', userData.name)
-
     const arrow = 'chevron-right'; 
 
     const editField = () => {
@@ -28,13 +19,9 @@ const Profile = ({ navigation }) => {
     }
 
     return (
-
         <View style={[styles.container, {
             flexDirection: "column"
-          }]}>
-
-              {/* <View style={[styles.pBold, {padding: 10}]}>{new Date().getFullYear()}/ {new Date().getDate()}/ {new Date().getMonth() + 1} </View> */}
-            
+          }]}>  
             <SafeAreaView style={styles.scrollContainer}>
                 <Header/>
                 <ScrollView style={styles.scrollView}>
@@ -54,9 +41,6 @@ const Profile = ({ navigation }) => {
                                     <View style={{flex: 8}}>
                                         <Text style={[styles.title, {alignSelf: 'center'}]}>{userData.name}</Text>
                                     </View>
-                                    {/* <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={25} color={'#1B3E72'} onPress={editField}/>
-                                    </View> */}
                                 </View>
                             </View>
                             <View style={styles.whitecard}>
@@ -65,18 +49,12 @@ const Profile = ({ navigation }) => {
                                         <Text style={styles.p}>Address</Text>
                                         <Text style={styles.pBold}>{userData.address}</Text>
                                     </View>
-                                    {/* <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={25} color={'#1B3E72'} onPress={editField}/>
-                                    </View> */}
                                 </View>
                                 <View style={styles.row}>
                                     <View style={{flex: 11}}>
                                         <Text style={styles.p}>Phone</Text>
                                         <Text style={styles.pBold}>{userData.contact}</Text>
                                     </View>
-                                    {/* <View style={{flex: 1, justifyContent: 'center'}}>
-                                        <FontAwesome5  name={arrow} size={25} color={'#1B3E72'} onPress={editField}/>
-                                    </View> */}
                                 </View>
                                 <View style={styles.row}>
                                     <View style={{flex: 11}}>

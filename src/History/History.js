@@ -36,13 +36,13 @@ async function get_clinic_data(userId) {
 const History = ({navigation}) => {
 
     const arrow = 'chevron-right'
+
     const dispatch = useDispatch()
 
     const user = useSelector((state) => state);
     const userData = user.login.user[0]
     const userId = userData.id
     // const userId = 200004
-
     const [clinicData, setClinicData] = useState([])
     const [data, setData] = useState()
   
@@ -57,16 +57,11 @@ const History = ({navigation}) => {
       })
     }, [])
 
-    // console.log("historyyyyyyyyy data", clinicData)
-    
-
     const viewClinic = () => {
         navigation.navigate('ViewClinic')
-        
     }
 
-    return (
-        
+    return (       
         
         <View style={[styles.container, {flexDirection: "column"}]}>
             <Header/>

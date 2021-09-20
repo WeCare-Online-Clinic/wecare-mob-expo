@@ -5,13 +5,6 @@ import { styles } from '../../../styles/global';
 import RequestButton from '../../../components/Button';
 import {useSelector, useDispatch} from 'react-redux';
 import Header from '../../../components/Header'
-// import { base64Decode } from 'base64topdf';
-
-import base64 from 'react-native-base64'
-
-import ViewPDFComponent from './ViewPDFComponent';
-
-
 
 const ViewReport = () =>{
 
@@ -19,14 +12,6 @@ const ViewReport = () =>{
     
     const reportData =  useSelector((state) => state.login.report)
 
-    const reportPdf = reportData.pdfReport
-
-    const decodePdf = base64.decode(reportPdf)
- 
-    console.log("Decode" , decodePdf)
-
-    console.log('sfddddddddddfsdfsdfsdf')
-    
     return (
         <View style={[styles.container, {
             flexDirection: "column"
@@ -83,7 +68,7 @@ const ViewReport = () =>{
                                         </View> 
                                     </View>
                                 </View> 
-                                {reportData.pdfReport == null ? <Text>N/A</Text> : <ViewPDFComponent reportDetails={reportData.pdfReport}/>}                          
+                                {/* {reportData.pdfReport == null ? <Text>N/A</Text> : <ViewPDFComponent reportDetails={reportData.pdfReport}/>}                           */}
                             </View>
                         </View>
                     </View>

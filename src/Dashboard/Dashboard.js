@@ -26,7 +26,7 @@ const Separator = () => (
         .get(Constants.API_BASE_URL + '/getNextClinicDetails/' + userId)
         .then((res) => {
           if (res.status == 200) {
-            console.log("dfdfdf", res)
+            // console.log("dfdfdf", res)
             clinic_data = res.data
           }
         })
@@ -64,7 +64,7 @@ const Separator = () => (
         .get(Constants.API_BASE_URL + '/getPatientStatistics/'+userId)
         .then((res) => {
           if (res.status == 200) {
-            console.log('stattttttt',res)
+            // console.log('stattttttt',res)
             stat_data = res.data
           }
         })
@@ -77,7 +77,6 @@ const Separator = () => (
 const Dashboard = ({navigation}) => {
 
     const dispatch = useDispatch()
-
     const user = useSelector((state) => state);
     const userData = user.login.user[0]
     const userId = userData.id
@@ -86,20 +85,15 @@ const Dashboard = ({navigation}) => {
     useEffect(() => {
         get_stat_data(userId).then((res) => {
           setStatData(res)
-          console.log('statttttttttttttt' ,res)
-        })
-      
+        })      
         get_next_clinic_data(userId).then((res) => {
           setClinicData(res)
           setNextClinicData(res[0])
-           console.log('nexxxxxxxxxxxxxxx', res)
-        })
-        
+        })        
         get_past_clinic_data(userId).then((res) => {
             setPastClinicData(res)
-            console.log(res)
-          })
-          
+            // console.log(res)
+          })          
       }, [])
 
     const [clinicData, setClinicData] = useState([])
@@ -107,21 +101,6 @@ const Dashboard = ({navigation}) => {
     const [pastClinicData, setPastClinicData] = useState([])
     const [statData, setStatData] = useState([])
     
-    // const dataaaa = nextClinicData.clinicDate
-    
-    // const [data, setData] = useState()
-    console.log('pasttts ' , pastClinicData[0])
-    console.log('neeasttts ' , clinicData)
-  
-    // const renderData = (data) => {
-    //   setData(data)
-    // }
-  
-    
-
-    
-    
-
     const viewNext = () => {
         navigation.push('NextClinic');
     } 
@@ -138,46 +117,36 @@ const Dashboard = ({navigation}) => {
                 <Header/>
                 <ScrollView style={styles.scrollView}>
                     <View style={{padding: 10 }}>
-                        <View style={styles.mainCard}>
-                            
-                        <View style={[styles.card, {flex: 2,}]}>
-                            <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
-                                <Text style={styles.H1}>Next Cilic  - </Text>
-                                {/* <Text>{ navigation.getParam() }</Text> */}
-                                <View style={styles.txtLeft}><Text style={styles.H1}>{nextClinicData.clinic && nextClinicData.clinic.name}</Text></View>
-                            </View>
-                            <View style={[{flex: 8, flexDirection: "row" }]}>
-                                <View style={[styles.cardI, {flex: 2,}]}>
-                                    <Text style={styles.p}>Date </Text>
-                                    <Text style={styles.p}>Time </Text>
-                                    <Text style={styles.p}>Queue No</Text>
-                                </View>
-                                <View style={[styles.cardI, {flex: 4,}]}>
-                                    <Text style={styles.p}>- {nextClinicData.clinic && nextClinicData.clinicAppointment.clinicDate.date}</Text>
-                                    <Text style={styles.p}>- {nextClinicData.clinic && nextClinicData.clinicAppointment.time}</Text>
-                                    <Text style={styles.p}>- {nextClinicData.clinic && nextClinicData.clinicAppointment.queueNo}</Text>
-                                </View>
-                            </View>
-                            <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
-                                <ActionButton text='View >>' onPress={() => {dispatch(setNextClinic(clinicData)), navigation.navigate('ViewNextClinic')}}/>
-                            </View>
-                        </View>
-                          
+                        <View style={styles.mainCard}>                            
+                          <View style={[styles.card, {flex: 2,}]}>
+                              <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
+                                  <Text style={styles.H1}>Next Cilic  - </Text>                              
+                                  <View style={styles.txtLeft}>
+                                    <Text style={styles.H1}>{nextClinicData.clinic && nextClinicData.clinic.name}</Text>
+                                  </View>
+                              </View>
+                              <View style={[{flex: 8, flexDirection: "row" }]}>
+                                  <View style={[styles.cardI, {flex: 2,}]}>
+                                      <Text style={styles.p}>Date </Text>
+                                      <Text style={styles.p}>Time </Text>
+                                      <Text style={styles.p}>Queue No</Text>
+                                  </View>
+                                  <View style={[styles.cardI, {flex: 4,}]}>
+                                      <Text style={styles.p}>- {nextClinicData.clinic && nextClinicData.clinicAppointment.clinicDate.date}</Text>
+                                      <Text style={styles.p}>- {nextClinicData.clinic && nextClinicData.clinicAppointment.time}</Text>
+                                      <Text style={styles.p}>- {nextClinicData.clinic && nextClinicData.clinicAppointment.queueNo}</Text>
+                                  </View>
+                              </View>
+                              <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>
+                                  <ActionButton text='View >>' onPress={() => {dispatch(setNextClinic(clinicData)), navigation.navigate('ViewNextClinic')}}/>
+                              </View>
+                          </View>
                             
                                 {statData && statData 
                                   .map((stat, index) => (
-                                    <View key={index} style={[styles.card, {justifyContent: 'center', alignItems: 'center'}]}>
-                                    
+                                    <View key={index} style={[styles.card, {justifyContent: 'center', alignItems: 'center'}]}> 
                                       <PatientStaticChart stat={stat}/>
-                                    </View>
-
-                                  ))
-                                }
-                            
-
-                            
-
-                            
+                                    </View>  ))}
 
                             <View style={[styles.card, {flex: 2,}]}>
                                 <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
@@ -202,7 +171,6 @@ const Dashboard = ({navigation}) => {
                                     <ActionButton text='View >>' onPress={() => {dispatch(setPastClinic(pastClinicData)), navigation.push('ViewPastClinic')}}/>
                                 </View>
                             </View>
-
                         </View>
                     </View>
                 </ScrollView>

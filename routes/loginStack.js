@@ -6,7 +6,6 @@ import LogIn from '../src/Login/Login'
 import Drawer from './drawer'
 import { Button } from 'react-native';
 // import Button from '../components/Button';
-import DdashboardStack from './dashboardStack';
 
 const Left = null
 
