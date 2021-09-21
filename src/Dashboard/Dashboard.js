@@ -80,7 +80,7 @@ const Dashboard = ({navigation}) => {
     const user = useSelector((state) => state);
     const userData = user.login.user[0]
     const userId = userData.id
-    // const userId = 200055
+    // const userId = 200004
 
     useEffect(() => {
         get_stat_data(userId).then((res) => {
@@ -100,6 +100,8 @@ const Dashboard = ({navigation}) => {
     const [nextClinicData, setNextClinicData] = useState([])
     const [pastClinicData, setPastClinicData] = useState([])
     const [statData, setStatData] = useState([])
+      
+    console.log(pastClinicData.length)
     
     const viewNext = () => {
         navigation.push('NextClinic');
@@ -151,7 +153,7 @@ const Dashboard = ({navigation}) => {
                             <View style={[styles.card, {flex: 2,}]}>
                                 <View style={[styles.cardTitle, {height: 40, flexDirection: "row", }]}>
                                     <Text style={styles.H1}>Past Clinics  - </Text>
-                                    <View style={styles.txtLeft}><Text style={styles.H1}>{pastClinicData[0] && pastClinicData[0].doctor.clinic.name}</Text></View>
+                                    <View style={styles.txtLeft}><Text style={styles.H1}>{pastClinicData[pastClinicData.length -1] && pastClinicData[pastClinicData.length -1].doctor.clinic.name}</Text></View>
                                 </View>
                                 <View style={[{flex: 8, flexDirection: "row" }]}>
                                     <View style={[styles.cardI, {flex: 2,}]}>
@@ -161,10 +163,10 @@ const Dashboard = ({navigation}) => {
                                         <Text style={styles.p}>Doctor</Text>
                                     </View>
                                     <View style={[styles.cardI, {flex: 4,}]}>
-                                        <Text style={styles.p}>- {pastClinicData[0] && pastClinicData[0].clinicAppointment.clinicDate.date}</Text>
-                                        <Text style={styles.p}>- {pastClinicData[0] && pastClinicData[0].clinicAppointment.time}</Text>
-                                        <Text style={styles.p}>- {pastClinicData[0] && pastClinicData[0].clinicAppointment.queueNo}</Text>
-                                        <Text style={styles.p}>- {pastClinicData[0] && pastClinicData[0].doctor.name}</Text>
+                                        <Text style={styles.p}>- {pastClinicData[pastClinicData.length -1] && pastClinicData[pastClinicData.length -1].clinicAppointment.clinicDate.date}</Text>
+                                        <Text style={styles.p}>- {pastClinicData[pastClinicData.length -1] && pastClinicData[pastClinicData.length -1].clinicAppointment.time}</Text>
+                                        <Text style={styles.p}>- {pastClinicData[pastClinicData.length -1] && pastClinicData[pastClinicData.length -1].clinicAppointment.queueNo}</Text>
+                                        <Text style={styles.p}>- {pastClinicData[pastClinicData.length -1] && pastClinicData[pastClinicData.length -1].doctor.name}</Text>
                                     </View>
                                 </View>
                                 <View style={{width: 100, alignSelf: 'flex-end', margin: 10}}>

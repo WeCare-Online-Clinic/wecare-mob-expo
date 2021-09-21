@@ -19,7 +19,7 @@ async function get_messages(userId) {
         .then((res) => {
           if (res.status == 200) {
             message_list = res.data
-            // console.log("dataaaa", res.data)
+            console.log("dataaaa", res.data)
           }
         })
       return message_list
@@ -34,8 +34,8 @@ const Header = () => {
     
     const user = useSelector((state) => state);
     const userData = user.login.user[0]
-    // const userId = userData.id
-    const userId = 200055
+    const userId = userData.id
+    // const userId = 200004
 
     const [currentTime, setCurrentTime] = useState('');
     const [currentDate, setCurrentDate] = useState('');
@@ -115,7 +115,7 @@ const Header = () => {
                 presentationStyle="overFullScreen" 
                 onDismiss={()=> {setModalVisible(!isModalVisible)}}>
                 <View style={styles.viewWrapper}>
-                    <View style={[styles.modalView , {transform: [{ translateX: -(width * 0.4) }, { translateY: -(height * 0.46) }],}]}>
+                    <View style={[styles.modalView , {transform: [{ translateX: -(width * 0.4) }, { translateY: -(height * 0.49) }],}]}>
                         <View style={[styles.row ,{paddingVertical: 10}]}>
                             <Text style={[styles.H1 ,{color: "#1B3E72"}]}> Notifications</Text>
                         </View>  
@@ -140,7 +140,7 @@ const Header = () => {
                                 messageList.patientMessages
                                 .map((row, index) => (
 
-                                    <View key={index} style={[styles.row, {paddingHorizontal: 30, marginVertical: 10}]}>
+                                    <View key={index} style={[styles.row, {paddingHorizontal: 10, marginVertical: 5}]}>
                                         <Text style={[styles.p, {textAlign: 'justify'}]}>{row.id && row.message } </Text>
                                         
                                     </View>  

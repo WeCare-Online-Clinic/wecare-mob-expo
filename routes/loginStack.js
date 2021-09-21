@@ -9,6 +9,7 @@ import { Button } from 'react-native';
 
 const Left = null
 
+
 const screens = {
     LogIn: {
         screen: LogIn,
@@ -16,6 +17,8 @@ const screens = {
     },
     Drawer: {
         screen: Drawer,
+        headerLeft: null
+
         
     },
 }
@@ -26,6 +29,7 @@ const LogInStack = createStackNavigator(screens, {
         headerTintColor: '#1B3E72',
         headerShown: false,
         headerBackAccessibilityLabel: null,
+    
         // headerLeft: <Button
         //     onPress={() => alert('This is a button!')}
         //     title="Info"
